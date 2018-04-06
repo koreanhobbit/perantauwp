@@ -1,0 +1,82 @@
+.loader {
+	opacity: 0.5;
+	position: absolute;
+	top: 45%;
+	right: 45%;
+	border: 16px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 16px solid blue;
+	border-right: 16px solid green;
+	border-bottom: 16px solid red;
+	width: 50px;
+	height: 50px;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.imageReferences{
+	min-height: 100px;
+}
+
+.full-modal > .modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 30px 10px 30px 30px;
+}
+
+.full-modal > .modal-dialog > .modal-content {
+  height: 100%;
+  min-height: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+#flashMessage{
+	position: absolute;
+	top:100px;
+	right:70px;
+	z-index: 100;
+	animation: flashMessage 6s forwards;
+}
+
+@keyframes flashMessage {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+.pickedImage {
+	background-color: blue;
+}
+
+.imageHolder{
+	position:relative;
+}
+
+.removeBtn {
+	position:absolute;
+	top: 40%;
+	right: 40%;
+	opacity:0;
+}
+
+.imageHolder:hover img{
+	opacity:0.3;
+}
+
+.imageHolder:hover > .removeBtn{
+	opacity:0.9;
+}
+
+
+

@@ -1,0 +1,17 @@
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Font Awesome
+@import "node_modules/font-awesome/scss/font-awesome";
+
+//overrides
+@import "resources/assets/backend/overrides";
+
+//helpers
+@import "resources/assets/backend/helpers";
+
+//styles
+@import "resources/assets/backend/styles";
