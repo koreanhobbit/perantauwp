@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Setting;
 use App\Currency;
 use App\Image;
+use App\Websosmed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -192,19 +193,32 @@ class SettingController extends Controller
             'name' => ['required', 'min:2'],
             'tagline' => ['required', 'min:2'],
             'currency' => ['required'],
+            'about' => ['required'],
+            'privacypolicy' => ['required'],
             'address' => ['required'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'string'],
             'background' => ['required'],
             'color' => ['required'],
         ]);
 
-        $setting->name = $request->name;
-        $setting->tagline = $request->tagline;
+        $setting->name = trim($request->name);
+        $setting->tagline = trim($request->tagline);
         $setting->currency_id = $request->currency;
         $setting->background_id = $request->background;
         $setting->color_id = $request->color;
         $setting->address = $request->address;
         $setting->privacy_policy = $request->privacypolicy;
+        $setting->email = $request->email;
+        $setting->phone = $request->phone;
+        $setting->about = $request->about;
         $setting->save();
+
+        foreach(Websosmed::get() as $contact) {
+            $name = $contact->slug;
+            $contact->value = $request->$name;
+            $contact->save();
+        }
 
         //detach all image in logo
         $setting->images()->detach();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSettingsWebsosmedsTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateSettingsWebsosmedsTable extends Migration
      */
     public function up()
     {
-        Schema::create('setting_websosmed', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('setting_id');
-            $table->unsignedInteger('websosmed_id');
+            $table->string('name');
+            $table->string('short_desc')->nullable();
+            $table->text('description')->nullable();
+            $table->string('icon');
+            $table->integer('type');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateSettingsWebsosmedsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setting_websosmed');
+        Schema::dropIfExists('services');
     }
 }

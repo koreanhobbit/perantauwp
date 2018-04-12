@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ColorPivotSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(AreaSeeder::class);
+        $this->call(SettingContactSeeder::class);
     }
 }

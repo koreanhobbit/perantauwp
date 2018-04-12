@@ -1,6 +1,5 @@
 {{-- tinymce javascript --}}
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 <script>
     Dropzone.autoDiscover = false;
 </script>
@@ -15,7 +14,7 @@
             menubar:false,
             mobile: {
                 theme: 'mobile',
-                plugins: [ 'autosave', 'image', 'link', 'lists preview' ],
+                plugins: [ 'autosave', 'link', 'lists', 'preview' ],
                 menubar: false
             },
         });

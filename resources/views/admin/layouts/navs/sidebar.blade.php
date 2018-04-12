@@ -51,6 +51,20 @@
                 </ul>
             </li>
 
+            {{-- Forms --}}
+            <li {{ (Request::is('/manage/service/form/*') ? 'class="active"' : '') }}>
+                <a href="{{ route('form.index') }}">
+                    <i class="fa fa-check-square-o"></i>&nbsp;Form
+                </a>
+            </li>
+
+            {{-- Company Service --}}
+             <li {{ (Request::is('/manage/service/*') ? 'class="active"' : '') }}>
+                <a href="{{ route('service.index') }}">
+                    <i class="fa fa-hand-o-right"></i>&nbsp;Service
+                </a>
+            </li>
+
             {{-- blog --}}
             <li {{ (Request::is('/manage/blog/*') ? 'class="active"' : '') }}>
                 <a href="{{ route('blog.index') }}"><i class="fa fa-newspaper-o fa-fw"></i>&nbsp;Blog</a>

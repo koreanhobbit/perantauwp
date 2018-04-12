@@ -18,6 +18,9 @@ class CreateSettingsTable extends Migration
             $table->string('name');
             $table->string('tagline');
             $table->text('address');
+            $table->string('phone');
+            $table->string('email');
+            $table->text('about');
             $table->text('privacy_policy');
             $table->unsignedInteger('currency_id');
             $table->unsignedInteger('themesetting_id')->default(1);

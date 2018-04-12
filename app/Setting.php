@@ -27,6 +27,11 @@ class Setting extends Model
     	return $this->morphToMany('App\Image', 'imageable')->withPivot('option','info')->withTimestamps();
     }
 
+    public function contacts() 
+    {
+        return $this->hasMany('App\WebSosmed', 'setting_id');
+    }
+
     public function thumbnailLogo() 
     {
     	return $thumbnail = DB::table('thumbnails')

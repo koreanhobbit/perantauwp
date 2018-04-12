@@ -116,7 +116,7 @@ class ScannedfileController extends Controller
     {
         $location = $scannedfile->location;
         $name = $scannedfile->name;
-        Storage::delete($location . $name);
+        Storage::delete($location);
         $scannedfile->delete();
         session()->flash('flashmessage', 'File(s) deleted successfully');
         return redirect(route('scannedfile.index'));

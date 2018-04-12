@@ -116,7 +116,7 @@ class FileController extends Controller
     {
         $location = $file->location;
         $name = $file->name;
-        Storage::delete($location . $name);
+        Storage::delete($location);
         $file->delete();
         session()->flash('flashmessage', 'File(s) deleted successfully');
         return redirect(route('file.index'));

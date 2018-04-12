@@ -20,13 +20,17 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<ul class="nav nav-tabs">
-					<li class="active">
+					<li class="{{ count($errors->all()) < 1 ? 'active' : '' }} {{ $errors->has('name') || $errors->has('tagline') || $errors->has('about') || $errors->has('privacypolicy') ? 'active' : '' }}">
 						<a href="#generalsetting" data-toggle="tab">General Setting</a>
+					</li>
+					<li class="{{ $errors->has('phone') || $errors->has('email') || $errors->has('address') ? 'active' : '' }}">
+						<a href="#contactsetting" data-toggle="tab">Contact Setting</a>
 					</li>
 					<li><a href="#themesetting" data-toggle="tab">Theme Setting</a></li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane fade active in" id="generalsetting">
+					{{-- Content for general setting --}}
+					<div class="tab-pane fade {{ count($errors->all()) < 1 ? 'active in' : '' }} {{ $errors->has('name') || $errors->has('tagline') || $errors->has('about') || $errors->has('privacypolicy') ? 'active in' : '' }}" id="generalsetting">
 						<div class="row">
 							<div class="col-sm-8">
 								@component('admin.widgets.panel')
@@ -34,40 +38,74 @@
 									@slot('panelBody')
 										<div class="row">
 											<div class="col-sm-12">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 													<label for="name">Name of The Company</label>
-													<input type="text" class="form-control" name="name" id="name" value="{{ $setting->name }}">
+													<input type="text" class="form-control" name="name" id="name" value="{{ $setting->name }}" required>
+													@if($errors->has('name'))
+														<div class="help-block">
+															<span>
+																<strong>{{ $errors->first('name') }}</strong>
+															</span>
+														</div>
+													@endif 
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="form-group {{ $errors->has('tagline') ? 'has-error' : '' }}">
+													<label for="tagline">Tagline</label>
+													<input type="text" class="form-control" name="tagline" id="tagline" value="{{ $setting->tagline }}" required>
+													@if($errors->has('tagline'))
+														<div class="help-block">
+															<span>
+																<strong>{{ $errors->first('tagline') }}</strong>
+															</span>
+														</div>
+													@endif 
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-sm-12">
 												<div class="form-group">
-													<label for="tagline">Tagline</label>
-													<input type="text" class="form-control" name="tagline" id="tagline" value="{{ $setting->tagline }}">
+													<label for="currency">Currency</label>
+													<select class="form-control" name="currency" id="currency">
+														@foreach($currencies as $currency)
+											        		<option value="{{ $currency->id }}" {{ $setting->currency_id == $currency->id ? 'selected' : ''}}>{{ ucfirst($currency->name) }}</option>
+											        	@endforeach
+												    </select>
 												</div>
 											</div>
 										</div>
-										<div class="row m-b-15">
+										<div class="row">
 											<div class="col-sm-12">
-												<label for="currency">Currency</label>
-												<select class="form-control" name="currency" id="currency">
-													@foreach($currencies as $currency)
-										        		<option value="{{ $currency->id }}" {{ $setting->currency_id == $currency->id ? 'selected' : ''}}>{{ ucfirst($currency->name) }}</option>
-										        	@endforeach
-											    </select>
+												<div class="form-group {{ $errors->has('about') ? 'has-error' : '' }}">
+													<label for="about">About The Company</label>
+													<textarea name="about" id="about" class="form-control" rows="10">{{ $setting->about }}</textarea>
+													@if($errors->has('about'))
+														<div class="help-block">
+															<span>
+																<strong>{{ $errors->first('about') }}</strong>
+															</span>
+														</div>
+													@endif
+												</div> 
 											</div>
 										</div>
-										<div class="row m-b-15">
+										<div class="row">
 											<div class="col-sm-12">
-												<label for="address">Address</label>
-												<textarea name="address" id="address" class="form-control">{{ $setting->address }}</textarea>
-											</div>
-										</div>
-										<div class="row m-b-15">
-											<div class="col-sm-12">
-												<label for="privacypolicy">Privacy Policy</label>
-												<textarea name="privacypolicy" id="privacypolicy" class="form-control" rows="10">{{ $setting->privacy_policy }}</textarea>
+												<div class="form-group {{ $errors->has('privacypolicy') ? 'has-error' : '' }}">
+													<label for="privacypolicy">Privacy Policy</label>
+													<textarea name="privacypolicy" id="privacypolicy" class="form-control" rows="10">{{ $setting->privacy_policy }}</textarea>
+													@if($errors->has('privacypolicy'))
+														<div class="help-block">
+															<span>
+																<strong>{{ $errors->first('privacypolicy') }}</strong>
+															</span>
+														</div>
+													@endif 
+												</div>
 											</div>
 										</div>
 										
@@ -108,6 +146,75 @@
 									@endslot
 								@endcomponent
 							</div>							
+						</div>
+					</div>
+					<div class="tab-pane fade {{ $errors->has('phone') || $errors->has('email') || $errors->has('address') ? 'active in' : '' }}" id="contactsetting">
+						<div class="row">
+							<div class="col-sm-12">
+								@component('admin.widgets.panel')
+									@slot('panelTitle1', 'Website Contact & Social Media')
+									@slot('panelBody')
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+													<label for="phone">Phone Number</label>
+													<input type="text" class="form-control" id="phone" name="phone" value="{{ $setting->phone }}" required>
+													@if($errors->has('phone'))
+														<div class="help-block">
+															<span>
+																<strong>{{ $errors->first('phone') }}</strong>
+															</span>
+														</div>
+													@endif 
+												</div>
+												<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+													<label for="email">Email Address</label>
+													<input type="email" class="form-control" id="email" name="email" value="{{ $setting->email }}" required>
+													@if($errors->has('email'))
+														<div class="help-block">
+															<span>
+																<strong>{{ $errors->first('email') }}</strong>
+															</span>
+														</div>
+													@endif 
+												</div>
+												@foreach($setting->contacts as $contact)
+													<div class="form-group">
+														<label for="{{ $contact->slug }}">{{ $contact->name }}</label>
+														<input type="text" class="form-control" name="{{ $contact->slug }}" id="{{ $contact->slug }}" value="{{ $contact->value }}">
+														<small><span><i class="fa fa-info-circle"></i></span>&nbsp;Put just the name of the account or user</small>
+													</div>
+												@endforeach
+											</div>
+										</div>
+									@endslot
+								@endcomponent
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								@component('admin.widgets.panel')
+									@slot('panelTitle1', 'Address')
+									@slot('panelBody')
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
+													<textarea name="address" id="address" class="form-control">{{ $setting->address }}</textarea>
+													@if($errors->has('address'))
+														<div class="help-block">
+															<span>
+																<strong>
+																	{{ $errors->first('address') }}
+																</strong>
+															</span>
+														</div>
+													@endif
+												</div>
+											</div>
+										</div>
+									@endslot
+								@endcomponent
+							</div>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="themesetting">

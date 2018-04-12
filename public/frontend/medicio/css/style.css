@@ -225,7 +225,7 @@ blockquote strong {
 /* =======
 Top area
 ======== */
-.top-area {
+/*.top-area {
 	-webkit-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
@@ -247,7 +247,7 @@ Top area
 .top-area p {
 	margin-bottom: 10px;
 }
-
+*/
 /* ===========
 Navigation
 ============= */
@@ -290,7 +290,6 @@ Navigation
     border-bottom: 1px solid rgba(255,255,255,.3);	
 	
 }
-
 
 
 .navbar-brand {
@@ -338,7 +337,7 @@ Navigation
 
 .navbar.navbar-custom.top-nav-collapse {
 	background: #fff;
-	
+	opacity: 0.9;
 }
 
 .navbar.navbar-custom.top-nav-collapse .navigation {
@@ -1229,16 +1228,16 @@ Testimonial
 
 .company-social .social-facebook a i{background: #3873ae;}
 .company-social .social-twitter a i{background: #62c6f8;}
-.company-social .social-dribble a i{background: #d74980;}
-.company-social .social-deviantart a i{background: #8da356;}
+.company-social .social-instagram a i{background: #d74980;}
+.company-social .social-youtube a i{background: #8da356;}
 .company-social .social-google a i {background: #000;}
-.company-social .social-vimeo a i {background: #51a6d3;}
+.company-social .social-linkedin a i {background: #51a6d3;}
 .company-social .social-facebook a:hover i {background: #4893ce;}
 .company-social .social-twitter a:hover i {background: #82e6ff;}
-.company-social .social-dribble a:hover i {background: #f769a0;}
-.company-social .social-deviantart a:hover i {background: #adc376;}
+.company-social .social-instagram a:hover i {background: #f769a0;}
+.company-social .social-youtube a:hover i {background: #adc376;}
 .company-social .social-google a:hover i {background: #333;}
-.company-social .social-vimeo a:hover i {background: #71c6f3;}
+.company-social .social-linkedin a:hover i {background: #71c6f3;}
 
 
 .carousel-inner > .item {

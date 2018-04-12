@@ -55,6 +55,13 @@ Route::prefix('manage')->middleware('auth')->group(function() {
     //Tag
     Route::post('tag', 'TagController@store')->name('tag.store');
 
+    //Service
+    Route::resource('service', 'ServiceController');
+
+    //Service form
+    Route::resource('form', 'FormController');
+
+    //#dashboard#//
     Route::get('/', function () {
         return view('admin.index');
     })->name('manage.index');

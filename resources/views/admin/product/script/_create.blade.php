@@ -324,7 +324,7 @@
             custom_ui_selector: '.imageReferencesBtn',
             mobile: {
                 theme: 'mobile',
-                plugins: [ 'autosave', 'image', 'link', 'lists preview' ],
+                plugins: [ 'autosave', 'image', 'link', 'lists', 'preview' ],
                 menubar: false
                 },
         });
