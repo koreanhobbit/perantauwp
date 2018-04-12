@@ -29,7 +29,7 @@ class Setting extends Model
 
     public function contacts() 
     {
-        return $this->hasMany('App\WebSosmed', 'setting_id');
+        return $this->hasMany('App\Websosmed', 'setting_id');
     }
 
     public function thumbnailLogo() 
