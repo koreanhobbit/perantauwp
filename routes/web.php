@@ -52,6 +52,9 @@ Route::prefix('manage')->middleware('auth')->group(function() {
     //##country##//
     Route::resource('setting/country', 'CountryController');
 
+    //##partner##//
+    Route::resource('setting/partner', 'PartnerController');
+
     //Tag
     Route::post('tag', 'TagController@store')->name('tag.store');
 
@@ -62,9 +65,7 @@ Route::prefix('manage')->middleware('auth')->group(function() {
     Route::resource('form', 'FormController');
 
     //#dashboard#//
-    Route::get('/', function () {
-        return view('admin.index');
-    })->name('manage.index');
+    Route::get('/', 'HomeController@index')->name('manage.index');
 });
 
 

@@ -40,6 +40,7 @@
   <script src="{{ asset('frontend/medicio/js/owl.carousel.js') }}"></script>
   <script src="{{ asset('frontend/medicio/js/custom.js') }}"></script>
   @yield('script')
+  @include('frontend.messenger.tawkto')
 </body>
 
 </html>

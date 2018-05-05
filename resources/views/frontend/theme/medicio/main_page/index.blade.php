@@ -76,7 +76,7 @@
           <div class="col-lg-8 col-lg-offset-2">
             <div class="wow fadeInDown" data-wow-delay="0.1s">
               <div class="section-heading text-center">
-                <h2 class="h-bold">Doctors</h2>
+                <h2 class="h-bold">Guide</h2>
                 <p>Ea melius ceteros oportere quo, pri habeo viderer facilisi ei</p>
               </div>
             </div>
@@ -136,8 +136,8 @@
           <div class="col-lg-8 col-lg-offset-2">
             <div class="wow lightSpeedIn" data-wow-delay="0.1s">
               <div class="section-heading text-center">
-                <h2 class="h-bold">Health packages</h2>
-                <p>Take charge of your health today with our specially designed health packages</p>
+                <h2 class="h-bold">Pricing</h2>
+                <p>Pilih jasa service yang anda inginkan dari beberapa paket service yang ditawarkan</p>
               </div>
             </div>
             <div class="divider-short"></div>
@@ -146,7 +146,7 @@
       </div>
 
       <div class="container">
-		@include('frontend.theme.medicio.main_page.sections.pricing')
+		    @include('frontend.theme.medicio.main_page.sections.pricing')
       </div>
     </section>
     <!-- /Section: pricing -->

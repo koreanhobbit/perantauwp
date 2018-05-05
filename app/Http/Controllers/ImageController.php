@@ -132,6 +132,6 @@ class ImageController extends Controller
         Storage::delete('public/upload/images/original/' . $image->name);
         $image->delete(); 
         session()->flash('flashmessage', 'Image(s) deleted successfully');
-        return redirect(route('image.index'));       
+        return redirect()->route('image.index');       
     }
 }

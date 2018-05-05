@@ -44,8 +44,8 @@
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#intro">Home</a></li>
-            <li><a href="#service">Service</a></li>
-            <li><a href="#doctor">Doctors</a></li>
+            <li><a href="#callaction">Service</a></li>
+            <li><a href="#doctor">Local Guides</a></li>
             <li><a href="#facilities">Facilities</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li class="dropdown">

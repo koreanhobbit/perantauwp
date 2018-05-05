@@ -1,9 +1,12 @@
 {
-  "/js/app.js": "/js/app.js",
-  "/css/app.css": "/css/app.css",
-  "/css/admin.css": "/css/admin.css",
-  "/css/timeline.css": "/css/timeline.css",
-  "/frontend/medicio/css/medicio_app.css": "/frontend/medicio/css/medicio_app.css",
-  "/js/admin.js": "/js/admin.js",
-  "/frontend/medicio/js/app.js": "/frontend/medicio/js/app.js"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/admin.css": "/css/admin.css",
+    "/css/timeline.css": "/css/timeline.css",
+    "/frontend/medicio/css/medicio_app.css": "/frontend/medicio/css/medicio_app.css",
+    "/frontend/medicio/js/app.js": "/frontend/medicio/js/app.js",
+    "/js/admin.js": "/js/admin.js",
+    "/js/Chart.js": "/js/Chart.js",
+    "/js/vendor/dropzone.js": "/js/vendor/dropzone.js",
+    "/frontend/medicio/js/owl.carousel.js": "/frontend/medicio/js/owl.carousel.js"
 }

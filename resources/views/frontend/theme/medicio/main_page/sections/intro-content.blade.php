@@ -25,7 +25,7 @@
     <div class="form-wrapper">
       <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
 
-        <div class="panel panel-skin">
+        <div class="panel panel-skin" style="opacity:0.9;">
           <div class="panel-heading">
             <h3 class="panel-title"><span class="fa fa-pencil-square-o"></span> Rencanakan kunjungan anda </h3>
           </div>
@@ -187,7 +187,7 @@
 
               <input type="submit" value="Submit" class="btn btn-skin btn-block btn-lg">
 
-              <p class="lead-footer">* We'll contact you by phone & email later</p>
+              <p class="lead-footer">* Kami akan menghubungi anda melalui whatsapp & email nanti</p>
 
             </form>
           </div>

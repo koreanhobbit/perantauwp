@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Setting;
 use App\Country;
+use App\Service;
 
 class MainPageController extends Controller
 {
@@ -22,9 +23,19 @@ class MainPageController extends Controller
             return view('frontend.theme.medicio.main_page.partials._area', compact('areas'))->render();
         }
 
+        if(!empty(Service::getSpecial())) {
+            $special = Service::getSpecial();
+        }
+        else{
+            $special = Service::getOneService();
+        }
+
+        $pricings = Service::where('highlight', 1)->take(3)->get();
+
+        $services = Service::orderBy('name', 'asc')->get();
         $countries = Country::orderBy('id', 'asc')->get(); 
         $setting = Setting::first();
-        return view('frontend.theme.medicio.main_page.index', compact('setting', 'countries'));
+        return view('frontend.theme.medicio.main_page.index', compact('setting', 'countries', 'services', 'pricings', 'special'));
     }
 
     /**

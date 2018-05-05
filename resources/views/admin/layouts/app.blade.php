@@ -14,6 +14,8 @@
     {{-- icon tab --}}
     <link rel="icon" href="{{ !empty($iconImage) ? asset($iconImage->location) : asset('images/astrologo.png') }}">
 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.7/metisMenu.min.css">
+
     {{-- dropzone css --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.0.1/min/dropzone.min.css">
     
@@ -39,6 +41,7 @@
 <script src="{{ asset("js/Chart.js") }}"></script>
 <script src="{{ asset("js/admin.js") }}"></script>
 <script src="{{ asset("js/vendor/dropzone.js") }}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.7/metisMenu.min.js"></script>
 @yield('script')
 </body>
 </html>

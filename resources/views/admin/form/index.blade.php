@@ -10,41 +10,65 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-12">
-			@component('admin.widgets.panel')
-				@slot('panelTitle1', 'Forms List')
-				@slot('panelBody')
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="table-responsive">
-								<table class="table table-hover table-striped">
-									<thead>
-										<tr>
-											<th class="text-center col-sm-4">Name</th>
-											<th class="text-center col-sm-3">Source</th>
-											<th class="text-center col-sm-1">Edit</th>
-											<th class="text-center col-sm-1">Delete Form</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td class="text-center">Service 1</td>
-											<td class="text-center">Service</td>
-											<td class="text-center">
-												<a href="" class="btn btn-sm btn-info"><span><i class="fa fa-edit"></i></span></a>
-											</td>
-											<td class="text-center">
-												<a href="" class="btn btn-sm btn-danger"><span><i class="fa fa-trash"></i></span></a>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+	@if(count($forms) < 1) 
+		<div class="alert alert-info">
+			<div class="text-center">
+				<h1>There is no form yet!</h1>
+			</div>
+		</div>
+	@else
+		<div class="row">
+			<div class="col-sm-12">
+				@component('admin.widgets.panel')
+					@slot('panelTitle1', 'Forms List')
+					@slot('panelBody')
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="table-responsive">
+									<table class="table table-hover table-striped">
+										<thead>
+											<tr>
+												<th class="text-center col-sm-4">Name</th>
+												<th class="text-center col-sm-3">Created at</th>
+												<th class="text-center col-sm-1">Edit</th>
+												<th class="text-center col-sm-1">Delete Form</th>
+											</tr>
+										</thead>
+										<tbody>
+											@foreach($forms as $form)
+												<tr>
+													<td class="text-center">{{ ucfirst($form->name) }}</td>
+													<td class="text-center">{{ $form->created_at->diffForHumans() }}</td>
+													<td class="text-center">
+														<a href="{{ route('form.edit', ['form' => $form->id]) }}" class="btn btn-sm btn-info"><span><i class="fa fa-edit"></i></span></a>
+													</td>
+													<td class="text-center">
+														<form action="{{ route('form.destroy', ['form' => $form->id]) }}" method="post" class="deleteForm">
+															{{ csrf_field() }}
+															{{ method_field('delete') }}
+																<button type="submit" class="btn btn-sm btn-danger"><span><i class="fa fa-trash"></i></span></button>
+														</form>
+													</td>
+												</tr>
+											@endforeach
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
-					</div>
-				@endslot
-			@endcomponent
+					@endslot
+				@endcomponent
+			</div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="text-center">
+					{{ $forms->links() }}
+				</div>
+			</div>
+		</div>
+	@endif
+@endsection
+@section('script')
+	@include('admin.form.script._index')
 @endsection

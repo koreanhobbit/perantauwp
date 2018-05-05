@@ -1,4 +1,6 @@
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+{{-- tinymce javascript --}}
+<script src="{{ asset('js/vendor/tinymce/jquery.tinymce.min.js') }}"></script>
+<script src="{{ asset('js/vendor/tinymce/tinymce.min.js') }}"></script>
 <script>
     Dropzone.autoDiscover = false;
 </script>

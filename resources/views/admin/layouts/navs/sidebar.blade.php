@@ -88,6 +88,9 @@
                     <li {{ Request::is('/manage/country/*') ? 'class="active"' : '' }}>
                         <a href="{{ route('country.index') }}"><i class="fa fa-flag"></i>&nbsp;Country</a>
                     </li>
+                    <li {{ Request::is('/manage/partner/*') ? 'class="active"' : '' }}>
+                        <a href="{{ route('partner.index') }}"><i class="fa fa-hand-spock-o"></i>&nbsp;Partner</a>
+                    </li>
                 </ul>
             </li>
             <li {{ (Request::is('*charts') ? 'class="active"' : '') }}>

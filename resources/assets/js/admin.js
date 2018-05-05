@@ -1,5 +1,5 @@
 // metisMenu
-require('metismenu');
+// require('metismenu');
 
 // theme
 require('./theme');

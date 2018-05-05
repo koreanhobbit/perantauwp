@@ -25,5 +25,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(AreaSeeder::class);
         $this->call(SettingContactSeeder::class);
+        $this->call(FormParts::class);
+        $this->call(ServiceSeeder::class);
+        $this->call(ServicePoint::class);
+        $this->call(ServiceFare::class);
     }
 }

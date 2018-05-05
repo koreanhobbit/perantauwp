@@ -20,6 +20,7 @@ class CreateServicesTable extends Migration
             $table->text('description')->nullable();
             $table->string('icon');
             $table->integer('type');
+            $table->integer('highlight')->default(0);
             $table->timestamps();
         });
     }

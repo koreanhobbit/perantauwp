@@ -80,9 +80,6 @@
 									<div class="help-block">
 										<span>
 											<strong>
-												{{-- @foreach($errors as $error)
-													{{ $error->areaName }}	
-												@endforeach --}}
 												{{ $errors->first('areaName') }}
 											</strong>
 										</span>

@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
             $setting->with('setting', \App\Setting::first());
         });
 
-        view()->composer('frontend.theme.medicio.layouts.frame', function($setting) {
-            $setting->with('setting', \App\Setting::first());
+        view()->composer('frontend.theme.medicio.main_page.sections.pricing', function($currencies) {
+            $currencies->with('currencies', \App\Currency::get());
         });
     }
 
