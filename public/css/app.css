@@ -11895,3 +11895,9 @@ button.close {
   opacity: 0.9;
 }
 
+@media screen and (max-width: 420px) {
+  .img-service {
+    display: none;
+  }
+}
+

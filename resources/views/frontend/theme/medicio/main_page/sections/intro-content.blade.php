@@ -7,7 +7,7 @@
     <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
       <h4 class="h-light color">{{ $setting->tagline }}</span> for you</h4>
     </div>
-    <div class="well well-trans">
+    <div class="well well-trans left-box">
       <div class="wow fadeInRight" data-wow-delay="0.1s">
 
         <ul class="lead-list">
@@ -15,11 +15,8 @@
           <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Staff berpengalaman</strong><br />Guide dan pendamping fasih berbahasa lokal</span></li>
           <li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Menyediakan segala kebutuhan</strong><br />Mulai dari simcard hingga rental mobil</span></li>
         </ul>
-
       </div>
     </div>
-
-
   </div>
   <div class="col-lg-6">
     <div class="form-wrapper">

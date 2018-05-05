@@ -2089,3 +2089,15 @@ a.btn:focus{
 		padding:250px 0 0;
 	}
 }
+
+@media (max-width: 420px) {
+  .img-service {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .left-box {
+    display: none;
+  }
+}

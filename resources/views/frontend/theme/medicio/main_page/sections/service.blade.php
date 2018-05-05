@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="wow fadeInUp" data-wow-delay="0.2s">
-      <img src="{{ asset('frontend/medicio/img/dummy/img-1.png') }}" class="img-responsive" alt="" />
+      <img src="{{ asset('frontend/medicio/img/dummy/img-1.png') }}" class="img-responsive img-service" alt="" />
     </div>
   </div>
   <div class="col-sm-6">
