@@ -2090,13 +2090,13 @@ a.btn:focus{
 	}
 }
 
-@media (max-width: 420px) {
+@media screen and (max-width: 420px) {
   .img-service {
     display: none;
   }
 }
 
-@media (max-width: 420px) {
+@media screen and (max-width: 420px) {
   .left-box {
     display: none;
   }
