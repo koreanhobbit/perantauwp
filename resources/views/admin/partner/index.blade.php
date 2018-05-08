@@ -11,7 +11,7 @@
 			</div>
 		</div>
 	</div>
-	@if(true)
+	@if(count($partners) < 1)
 		<div class="alert alert-info">
 			<div class="text-center">
 				<h1>There is no partner, add one!</h1>
@@ -22,7 +22,6 @@
 			<div class="col-sm-12">
 				@component('admin.widgets.panel')
 					@slot('panelTitle1', 'Partners List')
-
 					@slot('panelBody')
 						<div class="row">
 							<div class="col-sm-12">
@@ -37,28 +36,28 @@
 											</tr>
 										</thead>
 										<tbody>
-											{{-- @foreach($services as $service) --}}
+											@foreach($partners as $partner)
 												<tr>
-													<td class="text-center">{{-- {{ $service->name }} --}}</td>
-													<td class="text-center">Link</td>
+													<td class="text-center">{{ $partner->name }}</td>
+													<td class="text-center">{{ $partner->link }}</td>
 													<td class="text-center">
-														<a href="{{-- {{ route('service.edit', ['service' => $service->id]) }} --}}" class="btn btn-sm btn-info">
+														<a href="{{ route('partner.edit', ['partner' => $partner->id]) }}" class="btn btn-sm btn-info">
 															<span>
 																<i class="fa fa-edit"></i>
 															</span>
 														</a>
 													</td>
 													<td class="text-center">
-														{{-- <form action="{{ route('service.destroy', ['service' => $service->id]) }}" id="deleteForm" method="post">
+														<form action="{{ route('partner.destroy', ['partner' => $partner->id]) }}" class="deleteForm" method="post">
 															{{ csrf_field() }}
-															{{ method_field('delete') }} --}}
+															{{ method_field('delete') }}
 															<button class="btn btn-sm btn-danger" type="submit">
 																<i class="fa fa-trash"></i>
 															</button>
-														{{-- </form> --}}
+														</form>
 													</td>
 												</tr>
-											{{-- @endforeach --}}
+											@endforeach
 										</tbody>
 									</table>
 								</div>
@@ -68,12 +67,8 @@
 				@endcomponent
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="text-center">
-					{{-- {{ $services->links() }} --}}
-				</div>
-			</div>
-		</div>
 	@endif
+@endsection
+@section('script')
+	@include('admin.partner.script._index')
 @endsection

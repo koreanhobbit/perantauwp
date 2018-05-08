@@ -22,7 +22,7 @@
           </ul>
 
           <div class="price-bottom">
-            <a href="#" class="btn btn-skin btn-lg">Contact Us</a>
+            <a data-toggle="modal" data-target="#form_contact" class="btn btn-skin btn-lg">Contact Us</a>
           </div>
         </div>
       </div>

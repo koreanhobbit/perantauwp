@@ -13,7 +13,7 @@
             <ins class="ab zmin sprite sprite-i-triangle block"></ins>
           </div>
           <div class="person-text rel text-light">
-            <img src="img/testimonials/1.jpg" alt="" class="person img-circle" />
+            <img src="" alt="" class="person img-circle" />
             <a title="" href="#">Anna</a>
             <span>Chicago, Illinois</span>
           </div>
@@ -29,7 +29,7 @@
             <ins class="ab zmin sprite sprite-i-triangle block"></ins>
           </div>
           <div class="person-text rel text-light">
-            <img src="img/testimonials/2.jpg" alt="" class="person img-circle" />
+            <img src="" alt="" class="person img-circle" />
             <a title="" href="#">Matthew G</a>
             <span>San Antonio, Texas</span>
           </div>
@@ -44,7 +44,7 @@
             <ins class="ab zmin sprite sprite-i-triangle block"></ins>
           </div>
           <div class="person-text rel text-light">
-            <img src="img/testimonials/3.jpg" alt="" class="person img-circle" />
+            <img src="" alt="" class="person img-circle" />
             <a title="" href="#">Scarlet Smith</a>
             <span>Dallas, Texas</span>
           </div>
@@ -61,7 +61,7 @@
             <ins class="ab zmin sprite sprite-i-triangle block"></ins>
           </div>
           <div class="person-text rel text-light">
-            <img src="img/testimonials/4.jpg" alt="" class="person img-circle" />
+            <img src="" alt="" class="person img-circle" />
             <a title="" href="#">Lucas Thompson</a>
             <span>Austin, Texas</span>
           </div>
@@ -77,7 +77,7 @@
             <ins class="ab zmin sprite sprite-i-triangle block"></ins>
           </div>
           <div class="person-text rel text-light">
-            <img src="img/testimonials/5.jpg" alt="" class="person img-circle" />
+            <img src="" alt="" class="person img-circle" />
             <a title="" href="#">Ella Mentree</a>
             <span>Fort Worth, Texas</span>
           </div>
@@ -92,7 +92,7 @@
             <ins class="ab zmin sprite sprite-i-triangle block"></ins>
           </div>
           <div class="person-text rel text-light">
-            <img src="img/testimonials/6.jpg" alt="" class="person img-circle" />
+            <img src="" alt="" class="person img-circle" />
             <a title="" href="#">Suzanne Adam</a>
             <span>Detroit, Michigan</span>
           </div>

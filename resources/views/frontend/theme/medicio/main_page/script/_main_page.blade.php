@@ -45,5 +45,9 @@
 				$('#area').html('<option value="">Pilih Daerah</option>')
 			}
 		});
+
+
+		//multiple steps form
+		
 	});
 </script>

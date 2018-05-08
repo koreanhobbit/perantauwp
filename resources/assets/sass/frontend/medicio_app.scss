@@ -10,3 +10,9 @@
 //owl carousel
 @import "node_modules/owl.carousel/src/scss/owl.carousel";
 @import "node_modules/owl.carousel/src/scss/owl.theme.default";
+
+//helpers
+@import "resources/assets/backend/helpers";
+
+//style medicio
+@import "resources/assets/sass/frontend/style_medicio";

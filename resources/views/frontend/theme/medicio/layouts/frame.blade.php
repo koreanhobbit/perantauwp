@@ -2,33 +2,20 @@
 
 @section('body')
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-     {{--  <div class="top-area">
+      <div class="top-area">
         <div class="container">
           <div class="row">
             <div class="col-sm-6 col-md-6">
               <p class="bold text-left">Monday - Saturday, 8am to 10pm </p>
             </div>
             <div class="col-sm-6 col-md-6">
-              <div class="text-right">
-                <ul class="list-inline">
-                  <li>
-                    <a href="">
-                     Register
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      
-                        Login
-                      
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <p class="bold text-right">
+                {{ $setting->tagline }}
+              </p>
             </div>
           </div>
         </div>
-      </div> --}}
+      </div>
       <div class="container navigation">
 
         <div class="navbar-header page-scroll">
@@ -44,18 +31,20 @@
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#intro">Home</a></li>
+            <li><a href="#procedure">Procedure</a></li>
             <li><a href="#callaction">Service</a></li>
-            <li><a href="#doctor">Local Guides</a></li>
-            <li><a href="#facilities">Facilities</a></li>
+            {{-- <li><a href="#tour">Tour</a></li> --}}
             <li><a href="#pricing">Pricing</a></li>
-            <li class="dropdown">
+            <li><a href="#partner">Partner</a></li>
+            <li><a href="#about">About Us</a></li>
+            {{-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="index.html">Home CTA</a></li>
                 <li><a href="index-form.html">Home Form</a></li>
                 <li><a href="index-video.html">Home video</a></li>
               </ul>
-            </li>
+            </li> --}}
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -66,7 +55,7 @@
     @yield('section')
 
     <footer>
-      <div class="container">
+      <div class="container" id="about">
         <div class="row">
           <div class="col-sm-6 col-md-4">
             <div class="wow fadeInDown" data-wow-delay="0.1s">
@@ -165,4 +154,7 @@
         </div>
       </div>
     </footer>
+
+    {{-- INCLUDE MODALS --}}
+    @include('frontend.theme.medicio.main_page.modals.form')
 @endsection

@@ -1,4 +1,4 @@
-<div class="row">
+{{-- <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <div class="wow bounceInUp" data-wow-delay="0.2s">
       <div id="owl-works" class="owl-carousel">
@@ -11,4 +11,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}

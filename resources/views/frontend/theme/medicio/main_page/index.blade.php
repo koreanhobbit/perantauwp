@@ -42,7 +42,7 @@
     <!-- /Section: intro -->
 
     <!-- Section: boxes -->
-    <section id="boxes" class="home-section paddingtop-80">
+    <section id="procedure" class="home-section paddingtop-80">
 
       <div class="container">
         @include('frontend.theme.medicio.main_page.sections.boxes')
@@ -70,7 +70,7 @@
 
 
     <!-- Section: team -->
-    <section id="doctor" class="home-section bg-gray paddingbot-60">
+    {{-- <section id="doctor" class="home-section bg-gray paddingbot-60">
       <div class="container marginbot-50">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2">
@@ -89,19 +89,19 @@
         @include('frontend.theme.medicio.main_page.sections.team')
       </div>
 
-    </section>
+    </section> --}}
     <!-- /Section: team -->
 
 
 
     <!-- Section: works -->
-    <section id="facilities" class="home-section paddingbot-60">
+    {{-- <section id="tour" class="home-section bg-gray paddingbot-60">
       <div class="container marginbot-50">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2">
             <div class="wow fadeInDown" data-wow-delay="0.1s">
               <div class="section-heading text-center">
-                <h2 class="h-bold">Our facilities</h2>
+                <h2 class="h-bold">Tour</h2>
                 <p>Ea melius ceteros oportere quo, pri habeo viderer facilisi ei</p>
               </div>
             </div>
@@ -113,7 +113,7 @@
       <div class="container">
         @include('frontend.theme.medicio.main_page.sections.works')
       </div>
-    </section>
+    </section> --}}
     <!-- /Section: works -->
 
 

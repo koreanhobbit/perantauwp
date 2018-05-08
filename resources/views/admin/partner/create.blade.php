@@ -3,48 +3,89 @@
 @section('page_heading', 'Create Partner')
 
 @section('section')
-	<div class="row">
-		<div class="col-sm-12 m-b-20">
-			<div class="pull-right">
-				<button class="btn btn-sm btn-primary">Create Partner</button>
+	<form action="{{ route('partner.store') }}" method="post">
+		{{ csrf_field() }}
+		<div class="row">
+			<div class="col-sm-12 m-b-20">
+				<div class="pull-right">
+					<button class="btn btn-sm btn-primary" type="submit">Create Partner</button>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-8">
-			@component('admin.widgets.panel')
-				@slot('panelTitle1', 'Fill Form')
-				@slot('panelBody')
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input type="text" name="name" id="name" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="link">Link</label>
-						<input type="text" name="link" class="form-control" id="link">
-					</div>
-				@endslot
-			@endcomponent
-		</div>
-		<div class="col-sm-4">
-			@component('admin.widgets.panel')
-				@slot('panelTitle1', 'Image')
-				@slot('panelBody')
-					<a class="btn btn-info form-control" data-toggle="modal" data-target="#imageModal">
-						<span><i class="fa fa-plus"></i></span>
-						&nbsp;Add Image
-					</a>
-				@endslot
-			@endcomponent
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="pull-right">
-				<a href="{{ route('partner.index') }}"><span><i class="fa fa-arrow-left"></i></span>&nbsp;Back To List</a>
+		<div class="row">
+			<div class="col-sm-8">
+				@component('admin.widgets.panel')
+					@slot('panelTitle1', 'Fill Form')
+					@slot('panelBody')
+						<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
+							@if($errors->has('name'))
+								<div class="help-block">
+									<span>
+										<strong>
+											{{ $errors->first('name') }}
+										</strong>
+									</span>
+								</div>
+							@endif
+						</div>
+						<div class="form-group {{ $errors->has('link') ? 'has-error' : '' }}">
+							<label for="link">Link</label>
+							<input type="text" name="link" class="form-control" id="link" value="{{ old('link') }}">
+							@if($errors->has('link'))
+								<div class="help-block">
+									<span>
+										<strong>
+											{{ $errors->first('link') }}
+										</strong>
+									</span>
+								</div>
+							@endif
+						</div>
+					@endslot
+				@endcomponent
+			</div>
+			<div class="col-sm-4">
+				@component('admin.widgets.panel')
+					@slot('panelTitle1', 'Image')
+					@slot('panelBody')
+						<div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
+							<div class="imgPlace hidden">
+								<a class="close btn-warning closeImgBtn">
+									<i class="fa fa-close"></i>
+								</a>
+								<div class="thumbnail">
+									<img src="" title="" class="img-responsive">
+								</div>
+								<input type="hidden" name="image" id="image" value="">
+							</div>
+							<a class="btn btn-info form-control addImageBtn" data-toggle="modal" data-target="#imageModal">
+								<span><i class="fa fa-plus"></i></span>
+								&nbsp;Add Image
+							</a>
+							@if($errors->has('image'))
+								<div class="help-block">
+									<span>
+										<strong>
+											{{ $errors->first('image') }}
+										</strong>
+									</span>
+								</div>
+							@endif
+						</div>
+					@endslot
+				@endcomponent
 			</div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="pull-right">
+					<a href="{{ route('partner.index') }}"><span><i class="fa fa-arrow-left"></i></span>&nbsp;Back To List</a>
+				</div>
+			</div>
+		</div>
+	</form>
 	
 	{{-- modal --}}
 	{{-- modal for add new image --}}
@@ -66,12 +107,12 @@
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane fade active in" id="imageTab">
-							
+							@include('admin.partner.partials._image')
 						</div>
 						<div class="tab-pane fade" id="uploadImageTab">
 							@component('admin.widgets.panel')
 								@slot('panelBody')
-									<form action="{{ route('image.store') }}" class="dropzone" id="addNewImageDz" data-url="{{ route('blog.create') }}">
+									<form action="{{ route('image.store') }}" class="dropzone" id="addNewImageDz" data-url="{{ route('partner.create') }}">
 										{{ csrf_field() }}
 										<div class="fallback">
 											<input type="file" name="image" multiple>
@@ -92,4 +133,7 @@
 	    </div>
 	  </div>
 	</div>
+@endsection
+@section('script')
+	@include('admin.partner.script._create')
 @endsection

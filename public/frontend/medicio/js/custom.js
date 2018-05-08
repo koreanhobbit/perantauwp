@@ -14,6 +14,7 @@
     if ($(".navbar").offset().top > 50) {
       $(".navbar-fixed-top").addClass("top-nav-collapse");
       $(".top-area").addClass("top-padding");
+      $(".top-area").addClass("hidden");
       $(".navbar-brand").addClass("reduce");
 
       $(".navbar-custom ul.nav ul.dropdown-menu").css("margin-top", "11px");
@@ -21,6 +22,7 @@
     } else {
       $(".navbar-fixed-top").removeClass("top-nav-collapse");
       $(".top-area").removeClass("top-padding");
+      $(".top-area").removeClass("hidden");
       $(".navbar-brand").removeClass("reduce");
 
       $(".navbar-custom ul.nav ul.dropdown-menu").css("margin-top", "16px");

@@ -13,7 +13,7 @@
         <div class="col-md-4">
           <div class="wow lightSpeedIn" data-wow-delay="0.1s">
             <div class="cta-btn">
-              <a href="#" class="btn btn-skin btn-lg">Contact Us</a>
+              <a data-toggle="modal" data-target="#form_contact" class="btn btn-skin btn-lg">Contact Us</a>
             </div>
           </div>
         </div>
