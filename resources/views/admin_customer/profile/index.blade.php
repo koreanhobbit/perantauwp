@@ -10,7 +10,7 @@
 @section('page_heading', 'Profile')
 
 @section('section')
-	<form action="{{  }}" method="post"></form>
+	<form action="" method="post"></form>
 	<div class="col-sm-12">
 		<div class="row m-b-20">
 			<div class="col-sm-12">
