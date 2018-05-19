@@ -16,19 +16,19 @@
                 @endif
                 @if(Auth::check())
                   @if(Auth::user()->hasRole('superadministrator'))
-                    <div class="pull-right">
+                    {{-- <div class="pull-right"> --}}
                       <a href="{{ route('manage.index') }}" class="btn btn-sm btn-primary">Dashboard</a>  
-                    </div>
+                    {{-- </div> --}}
                   @elseif(Auth::user()->hasRole('customer'))
-                    <div class="pull-right">
+                    {{-- <div class="pull-right"> --}}
                       <a href="{{ route('dashboard.index', ['user' => Auth::user()->name, 'id' => Auth::user()->id]) }}" class="btn btn-sm btn-primary">Dashboard</a>  
-                    </div>
+                    {{-- </div> --}}
                   @else
                   <form action="{{ route('logout') }}" method="post">
                     {{ csrf_field() }}
-                    <div class="pull-right">
+                    {{-- <div class="pull-right"> --}}
                       <button type="submit" class="btn btn-sm btn-primary">Log out</button>
-                    </div>
+                    {{-- </div> --}}
                   </form>
                   @endif
                 @endif
