@@ -21,13 +21,13 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li {{ (Request::is('/manage/user/*') ? 'class="active"' : '') }}>
-                        <a href="{{ route('user.index') }}"> <i class="fa fa-user"></i>&nbsp;User</a>
+                        <a href="{{ route('user.index') }}"> <i class="fa fa-user fa-fw"></i>&nbsp;User</a>
                     </li>
                     <li {{ (Request::is('/manage/role/*') ? 'class="active"' : '') }}>
-                        <a href="{{ route('role.index') }}"><i class="fa fa-user-secret"></i>&nbsp;Role</a>
+                        <a href="{{ route('role.index') }}"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Role</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-thumbs-up"></i>&nbsp;Permission</a>
+                    <li {{ (Request::is('/manage/permission/*') ? 'class="active"' : '') }}>
+                        <a href="{{ route('permission.index') }}"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;Permission</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
@@ -40,13 +40,13 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li {{ (Request::is('/manage/image/*') ? 'class="active"' : '') }}>
-                        <a href="{{ route('image.index') }}"> <i class="fa fa-picture-o"></i>&nbsp;Images</a>
+                        <a href="{{ route('image.index') }}"> <i class="fa fa-picture-o fa-fw"></i>&nbsp;Images</a>
                     </li>
                     <li {{ (Request::is('/manage/file/*') ? 'class="active"' : '') }}>
-                        <a href="{{ route('file.index') }}"> <i class="fa fa-file-pdf-o"></i>&nbsp;Files</a>
+                        <a href="{{ route('file.index') }}"> <i class="fa fa-file-pdf-o fa-fw"></i>&nbsp;Files</a>
                     </li>
                     <li {{ (Request::is('/manage/scanned-file/*') ? 'class="active"' : '') }}>
-                        <a href="{{ route('scannedfile.index') }}"> <i class="fa fa-file-image-o"></i>&nbsp;Scanned Files</a>
+                        <a href="{{ route('scannedfile.index') }}"> <i class="fa fa-file-image-o fa-fw"></i>&nbsp;Scanned Files</a>
                     </li>
                 </ul>
             </li>
@@ -54,14 +54,14 @@
             {{-- Forms --}}
             <li {{ (Request::is('/manage/service/form/*') ? 'class="active"' : '') }}>
                 <a href="{{ route('form.index') }}">
-                    <i class="fa fa-check-square-o"></i>&nbsp;Form
+                    <i class="fa fa-check-square-o fa-fw"></i>&nbsp;Form
                 </a>
             </li>
 
             {{-- Company Service --}}
              <li {{ (Request::is('/manage/service/*') ? 'class="active"' : '') }}>
                 <a href="{{ route('service.index') }}">
-                    <i class="fa fa-hand-o-right"></i>&nbsp;Service
+                    <i class="fa fa-hand-o-right fa-fw"></i>&nbsp;Service
                 </a>
             </li>
 
@@ -83,13 +83,13 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li {{ Request::is('/manage/setting/*') ? 'class="active"' : '' }}>
-                        <a href="{{ route('setting.index', ['set' => 1]) }}"><i class="fa fa-gear"></i>&nbsp;Setting</a>
+                        <a href="{{ route('setting.index', ['set' => 1]) }}"><i class="fa fa-gear fa-fw"></i>&nbsp;Setting</a>
                     </li>
                     <li {{ Request::is('/manage/country/*') ? 'class="active"' : '' }}>
-                        <a href="{{ route('country.index') }}"><i class="fa fa-flag"></i>&nbsp;Country</a>
+                        <a href="{{ route('country.index') }}"><i class="fa fa-flag fa-fw"></i>&nbsp;Country</a>
                     </li>
                     <li {{ Request::is('/manage/partner/*') ? 'class="active"' : '' }}>
-                        <a href="{{ route('partner.index') }}"><i class="fa fa-hand-spock-o"></i>&nbsp;Partner</a>
+                        <a href="{{ route('partner.index') }}"><i class="fa fa-hand-spock-o fa-fw"></i>&nbsp;Partner</a>
                     </li>
                 </ul>
             </li>

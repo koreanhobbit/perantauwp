@@ -46,9 +46,13 @@
 														</a>
 													</td>
 													<td class="text-center">
-														<button class="btn btn-sm btn-danger"> 
+														<form action="{{ route('role.destroy', ['role' => $role->id]) }}" method="post" class="formDelete">
+															{{ csrf_field() }}
+															{{ method_field('delete') }}
+															<button class="btn btn-sm btn-danger"> 
 															<i class="fa fa-trash-o"></i>
-														</button>
+															</button>
+														</form>
 													</td>
 												</tr>
 											@endforeach
@@ -69,4 +73,8 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('script')
+	@include('admin.usermanagement.role.script._index')
 @endsection

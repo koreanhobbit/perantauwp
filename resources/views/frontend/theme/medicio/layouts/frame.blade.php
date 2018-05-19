@@ -6,11 +6,32 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6 col-md-6">
-              <p class="bold text-left">Monday - Saturday, 8am to 10pm </p>
+              <p class="bold text-left">{{ Auth::check() ? 'Hi, ' . ucfirst(Auth::user()->name) : $setting->tagline }}</p>
             </div>
             <div class="col-sm-6 col-md-6">
               <p class="bold text-right">
-                {{ $setting->tagline }}
+                @if(!Auth::check())
+                  <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#loginmodal">Log in</a>
+                  <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#registermodal">Sign Up</a>
+                @endif
+                @if(Auth::check())
+                  @if(Auth::user()->hasRole('superadministrator'))
+                    <div class="pull-right">
+                      <a href="{{ route('manage.index') }}" class="btn btn-sm btn-primary">Dashboard</a>  
+                    </div>
+                  @elseif(Auth::user()->hasRole('customer'))
+                    <div class="pull-right">
+                      <a href="{{ route('dashboard.index', ['user' => Auth::user()->name, 'id' => Auth::user()->id]) }}" class="btn btn-sm btn-primary">Dashboard</a>  
+                    </div>
+                  @else
+                  <form action="{{ route('logout') }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="pull-right">
+                      <button type="submit" class="btn btn-sm btn-primary">Log out</button>
+                    </div>
+                  </form>
+                  @endif
+                @endif
               </p>
             </div>
           </div>
@@ -22,7 +43,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="{{ route('mainpage.index') }}">
                     <img src="{{ !empty($setting->logoImage()) ? asset($setting->logoImage()->location) : asset('images/astrologo.png') }}" title="{{ !empty($setting->logoImage()) ? $setting->logoImage()->name : 'Astro Logo' }}" width="150" height="40" />
                 </a>
         </div>
@@ -156,5 +177,5 @@
     </footer>
 
     {{-- INCLUDE MODALS --}}
-    @include('frontend.theme.medicio.main_page.modals.form')
+    @yield('modals')
 @endsection

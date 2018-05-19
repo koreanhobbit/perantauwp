@@ -8,9 +8,16 @@ use Intervention\Image\ImageManagerStatic as ImageIv;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Thumbnail;
+use App\Medium;
 
 class ImageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('role:customer|superadministrator')->only(['store', 'destroy']);
+        $this->middleware('role:superadministrator')->except(['store', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,6 +49,14 @@ class ImageController extends Controller
     {
         if ($request->has('image') && Auth::check()) {
             $images = $request->file('image');
+            if(!Storage::exists('public/upload/images/thumbnail/')) {
+                Storage::makeDirectory('public/upload/images/thumbnail/');
+            }
+
+            if(!Storage::exists('public/upload/images/medium/')) {
+                Storage::makeDirectory('public/upload/images/medium/');
+            }
+
             foreach($images as $image) {
                 //save the original pic in disc
                 $name = uniqid(). '_' . time() . '_' . 'original' . $image->getClientOriginalName();
@@ -52,6 +67,11 @@ class ImageController extends Controller
                 $thumbDestinationPath = 'storage/upload/images/thumbnail/';
                 $thumbName = uniqid(). '_' . time() . '_' . 'thumb' . $image->getClientOriginalName();
                 $thumb = ImageIv::make('storage/upload/images/original/' . $name)->resize(100,100)->save($thumbDestinationPath . $thumbName);
+
+                //make and save medium in disc
+                $mediumDestinationPath = 'storage/upload/images/medium/';
+                $mediumName = uniqid(). '_' . time() . '_' . 'medium' . $image->getClientOriginalName();
+                $medium = ImageIv::make('storage/upload/images/original/' . $name)->resize(300,300)->save($mediumDestinationPath . $mediumName);
 
                 //save the image to database
                 $newImage = new Image;
@@ -70,6 +90,15 @@ class ImageController extends Controller
                 $newThumb->type = Storage::mimeType('public/upload/images/thumbnail/' . $thumbName);
                 $newThumb->image_id = $newImage->id;
                 $newThumb->save();
+
+                //save the medium to database
+                $newMedium = new Medium;
+                $newMedium->name = $mediumName;
+                $newMedium->location = $mediumDestinationPath . $mediumName;
+                $newMedium->size = Storage::size('public/upload/images/medium/' . $mediumName);
+                $newMedium->type = Storage::mimeType('public/upload/images/medium/' . $mediumName);
+                $newMedium->image_id = $newImage->id;
+                $newMedium->save();
             }
             session()->flash('flashmessage', 'Image(s) added successfully');
         }

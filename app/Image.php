@@ -12,6 +12,10 @@ class Image extends Model
     	return $this->hasOne('App\Thumbnail');
     }
 
+    public function medium() {
+    	return $this->hasOne('App\Medium');
+    }
+
     public function author() {
     	return $this->belongsTo('App\User', 'user_id');
     }

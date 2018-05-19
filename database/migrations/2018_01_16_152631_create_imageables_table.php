@@ -17,7 +17,7 @@ class CreateImageablesTable extends Migration
             $table->unsignedInteger('image_id');
             $table->unsignedInteger('imageable_id');
             $table->string('imageable_type');
-            $table->integer('option')->default(0);
+            $table->unsignedInteger('option')->nullable();
             $table->string('info')->nullable();
             $table->timestamps();
         });

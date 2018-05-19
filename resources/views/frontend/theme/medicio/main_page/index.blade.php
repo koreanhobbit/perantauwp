@@ -172,6 +172,15 @@
     </section>
 @endsection
 
+@section('modals')
+  <div>
+    @include('frontend.theme.medicio.main_page.modals.auth.login')
+  </div>
+  <div>
+    @include('frontend.theme.medicio.main_page.modals.auth.signup')
+  </div>
+@endsection
+
 @section('script')
   @include('frontend.theme.medicio.main_page.script._main_page')
 @endsection

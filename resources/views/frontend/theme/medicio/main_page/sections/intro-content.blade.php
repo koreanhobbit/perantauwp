@@ -31,16 +31,16 @@
             <div id="errormessage"></div>
 
             <form action="" method="post" role="form" class="bookingForm lead">
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                  <div class="form-group {{ $errors->has('intro-name') ? 'has-error' : '' }}">
                     <label>Nama</label>
-                    <input type="text" name="name" id="name" class="form-control input-md" required>
-                    @if($errors->has('name'))
+                    <input type="text" name="intro-name" id="intro-name" class="form-control input-md" required>
+                    @if($errors->has('intro-name'))
                       <div class="help-block">
                         <span>
                           <strong>
-                            {{ $errors->first('name') }}
+                            {{ $errors->first('intro-name') }}
                           </strong>
                         </span>
                       </div>
@@ -48,32 +48,32 @@
                   </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                  <div class="form-group {{ $errors->has('intro-email') ? 'has-error' : '' }}">
                     <label>Email</label>
-                    <input type="email" name="email" id="email" class="form-control input-md" required>
-                    @if($errors->has('email'))
+                    <input type="email" name="intro-email" id="intro-email" class="form-control input-md" required>
+                    @if($errors->has('intro-email'))
                       <div class="help-block">
                         <span>
                           <strong>
-                            {{ $errors->first('email') }}
+                            {{ $errors->first('intro-email') }}
                           </strong>
                         </span>
                       </div>
                     @endif
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+                  <div class="form-group {{ $errors->has('intro-phone') ? 'has-error' : '' }}">
                     <label>Nomor Telepon</label>
-                    <input type="tel" name="phone" id="phone" class="form-control input-md" required>
-                    @if($errors->has('email'))
+                    <input type="tel" name="intro-phone" id="intro-phone" class="form-control input-md" required>
+                    @if($errors->has('intro-phone'))
                       <div class="help-block">
                         <span>
                           <strong>
-                            {{ $errors->first('phone') }}
+                            {{ $errors->first('intro-phone') }}
                           </strong>
                         </span>
                       </div>
@@ -82,37 +82,37 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group {{ $errors->has('whatsapp') ? 'has-error' : '' }}">
+                  <div class="form-group {{ $errors->has('intro-whatsapp') ? 'has-error' : '' }}">
                     <label>Nomor Whatsapp</label>
-                    <input type="tel" name="whatsapp" id="whatsapp" class="form-control input-md" required>
-                    @if($errors->has('whatsapp'))
+                    <input type="tel" name="intro-whatsapp" id="intro-whatsapp" class="form-control input-md" required>
+                    @if($errors->has('intro-whatsapp'))
                       <div class="help-block">
                         <span>
                           <strong>
-                            {{ $errors->first('whatsapp') }}
+                            {{ $errors->first('intro-whatsapp') }}
                           </strong>
                         </span>
                       </div>
                     @endif
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+                  <div class="form-group {{ $errors->has('intro-country') ? 'has-error' : '' }}">
                     <label>Negara</label>
-                    <select name="country" id="country" class="form-control" data-url="{{route('mainpage.index') }}">
+                    <select name="intro-country" id="intro-country" class="form-control" data-url="{{route('mainpage.index') }}">
                       <option value="">Pilih Negara</option>
                       @foreach($countries as $country)
                         <option value="{{ $country->id }}">{{ ucfirst($country->name) }}</option>
                       @endforeach
                     </select>
-                    @if($errors->has('email'))
+                    @if($errors->has('intro-country'))
                       <div class="help-block">
                         <span>
                           <strong>
-                            {{ $errors->first('phone') }}
+                            {{ $errors->first('intro-country') }}
                           </strong>
                         </span>
                       </div>
@@ -121,16 +121,16 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group {{ $errors->has('whatsapp') ? 'has-error' : '' }}">
+                  <div class="form-group {{ $errors->has('intro-area') ? 'has-error' : '' }}">
                     <label>Daerah</label>
-                    <select name="area" id="area" class="form-control" disabled>
+                    <select name="intro-area" id="intro-area" class="form-control" disabled>
                       <option value="">Pilih Daerah</option>
                     </select>
-                    @if($errors->has('area'))
+                    @if($errors->has('intro-area'))
                       <div class="help-block">
                         <span>
                           <strong>
-                            {{ $errors->first('area') }}
+                            {{ $errors->first('intro-area') }}
                           </strong>
                         </span>
                       </div>
@@ -182,7 +182,7 @@
                 </div>
               </div>
 
-              <input type="submit" value="Submit" class="btn btn-skin btn-block btn-lg">
+              <input type="submit" value="Submit" class="btn btn-skin btn-block btn-lg" id="intro-submit">
 
               <p class="lead-footer">* Kami akan menghubungi anda melalui whatsapp & email nanti</p>
 

@@ -21,7 +21,7 @@ class MainPageController extends Controller
             $areas = Country::find($request->countryId)->areas;
             
             return view('frontend.theme.medicio.main_page.partials._area', compact('areas'))->render();
-        }
+        } 
 
         if(!empty(Service::getSpecial())) {
             $special = Service::getSpecial();

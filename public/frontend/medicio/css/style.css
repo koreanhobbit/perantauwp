@@ -237,21 +237,21 @@ Top area
     transition: all .4s ease-in-out;
 	width: 100%;
 	color: #fff;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
-.top-area.top-padding {
+/* .top-area.top-padding {
 	-webkit-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 	padding-top: 6px;
 	padding-bottom: 0;
 	margin-bottom: 10px;
-}
+} */
 
 .top-area p {
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 }
 
 /* ===========

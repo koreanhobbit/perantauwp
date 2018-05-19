@@ -24,6 +24,7 @@
   <link id="t-colors" href="{{ !empty($setting->themeColor) ? asset($setting->themeColor->location) : asset('frontend/medicio/color/blue.css') }}" rel="stylesheet" type="text/css" />
 
   @yield('style')
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">

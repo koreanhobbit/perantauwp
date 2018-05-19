@@ -118,7 +118,7 @@ class ServiceSeeder extends Seeder
             'name' => 'Tiket Festival/Konser',
             'short_desc' => 'Nonton Konser? Festival? Taman Hiburan?',
             'description'=> 'Kami menyediakan jasa dan informasi untuk mendapatkan tiket konser musik, festival, dan tiket masuk taman hiburan di negara tujuan.',
-            'icon'=> 'bed',
+            'icon'=> 'ticket',
             'type'=> 0,
             'created_at'=> new DateTime(),
             'updated_at'=> new DateTime()

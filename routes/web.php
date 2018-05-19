@@ -17,61 +17,101 @@
 
 Route::get('/', 'MainPageController@index')->name('mainpage.index');
 
-Auth::routes();
+//contact message
+Route::post('/contact', 'ContactController@store')->name('contact.store');
 
-Route::prefix('manage')->middleware('auth')->group(function() {
+Route::get('/contact', 'ContactController@create')->name('contact.create');
+
+//####################//
+//########AUTH########//
+//####################//
+Route::post('/login', 'Auth\LoginController@login')->name('login.attempt');
+
+Route::post('/register', 'Auth\RegisterController@register')->name('register.attempt');
+
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
+
+Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+
+//####################//
+//######MANAGE########//
+//####################//
+Route::prefix('manage')->group(function() {
 
     //##user management##//
     //user
-    Route::resource('user','UserController');
+    Route::resource('user','UserController')->middleware('role:superadministrator');
 
     //role
-    Route::resource('role', 'RoleController');
+    Route::resource('role', 'RoleController')->middleware('role:superadministrator');
+
+    //permission
+    Route::resource('permission', 'PermissionController')->middleware('role:superadministrator');
 
     //##Media Management##//
     //Image
     Route::resource('image', 'ImageController');
 
     //File
-    Route::resource('file', 'FileController');
+    Route::resource('file', 'FileController')->middleware('role:superadministrator');
 
     //Scanned File 
-    Route::resource('scannedfile', 'ScannedfileController');
+    Route::resource('scannedfile', 'ScannedfileController')->middleware('role:superadministrator');
 
     //##Blog##//
-    Route::resource('blog', 'BlogController');
-    Route::put('/blog/publish/{blog}', 'BlogPublishingController@index')->name('blog.publish');
+    Route::resource('blog', 'BlogController')->middleware('role:superadministrator');
+    Route::put('/blog/publish/{blog}', 'BlogPublishingController@index')->name('blog.publish')->middleware('role:superadministrator');
 
     //##Product##//
-    Route::resource('product', 'ProductController');
+    Route::resource('product', 'ProductController')->middleware('role:superadministrator');
 
     //## General Settings ##//
-    Route::get('/setting/{setting}/index', 'SettingController@index')->name('setting.index');
-    Route::put('/setting/{setting}', 'SettingController@update')->name('setting.update');
+    Route::get('/setting/{setting}/index', 'SettingController@index')->name('setting.index')->middleware('role:superadministrator');
+    Route::put('/setting/{setting}', 'SettingController@update')->name('setting.update')->middleware('role:superadministrator');
 
     //##country##//
-    Route::resource('setting/country', 'CountryController');
+    Route::resource('setting/country', 'CountryController')->middleware('role:superadministrator');
 
     //##partner##//
-    Route::resource('setting/partner', 'PartnerController');
+    Route::resource('setting/partner', 'PartnerController')->middleware('role:superadministrator');
 
     //Tag
-    Route::post('tag', 'TagController@store')->name('tag.store');
+    Route::post('tag', 'TagController@store')->name('tag.store')->middleware('role:superadministrator');
 
     //Service
-    Route::resource('service', 'ServiceController');
+    Route::resource('service', 'ServiceController')->middleware('role:superadministrator');
 
     //Service form
-    Route::resource('form', 'FormController');
+    Route::resource('form', 'FormController')->middleware('role:superadministrator');
 
     //#dashboard#//
-    Route::get('/', 'HomeController@index')->name('manage.index');
+    Route::get('/', 'HomeController@index')->name('manage.index')->middleware('role:superadministrator');
 });
 
 
+//####################//
+//##CUSTOMER BACKEND##//
+//####################//
 
+Route::prefix('customer')->middleware('role:customer')->group(function() {
 
+    //#profile#//
+    
+    Route::get('{user}/profile/{name}', 'CustomerProfileController@index')->name('customer.profile.index');
 
+    Route::put('{user}/profile/{name}', 'CustomerProfileController@update')->name('customer.profile.update');
+
+    //#dashboard#//
+    Route::resource('{name}/{user}/dashboard', 'CustomerHomeController');
+
+});
 
 
 
@@ -155,6 +195,3 @@ Route::get('/collapse', function() {
     return View::make('admin.collapse');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

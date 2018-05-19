@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +29,27 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/manage';
+    protected function redirectTo() 
+    {
+        $user = Auth::user();
+        
+        //if role is customer
+        if($user->hasRole('customer')) {
+            return route('mainpage.index');
+        }
+
+        //if role is guide
+        if($user->hasRole('guide')) {
+            return route('manage.index');
+        }
+
+        //if role is provider
+        if($user->hasRole('provider')) {
+            return route('manage.index');
+        }
+
+        return route('mainpage.index');
+    }
 
     /**
      * Create a new controller instance.
@@ -48,9 +70,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'register-name' => 'required|string|max:255',
+            'register-email' => 'required|string|email|max:255|unique:users,email',
+            'registerpassword' => 'required|string|min:6|confirmed',
+            'registerrole' => 'required|integer|between:5,7',
+            'g-recaptcha-response' => 'required|captcha',
+
         ]);
     }
 
@@ -62,10 +87,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $user = User::create([
+            'name' => $data['register-name'],
+            'email' => $data['register-email'],
+            'password' => bcrypt($data['registerpassword']),
         ]);
+
+        //add role 
+        $role = Role::find($data['registerrole']);
+        $user->attachRole($role);
+        
+        return $user;
     }
 }

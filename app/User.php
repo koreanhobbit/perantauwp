@@ -17,13 +17,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $guarded = [
+        'password', 'remember_token'
     ];
-
-    // protected $dispatchesEvents = [
-    //     'created' => NewUser::class,
-    // ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -39,8 +35,8 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id')->withPivot('user_type');
     }
 
-    public function activation()
+    public function images()
     {
-        return $this->hasOne('App\FirstPassword', 'user_id');
+        return $this->morphToMany('App\Image', 'imageable')->withPivot('option', 'info')->withTimestamps();
     }
 }

@@ -33,6 +33,14 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('frontend.theme.medicio.main_page.sections.pricing', function($currencies) {
             $currencies->with('currencies', \App\Currency::get());
         });
+
+        //######################################//
+        //##########CUSTOMER BACKEND############//
+        //######################################//
+        view()->composer('admin_customer.layouts.nav', function($setting) {
+            $setting->with('setting', \App\Setting::first());
+        });
+
     }
 
     /**

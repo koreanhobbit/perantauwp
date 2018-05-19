@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceSeeder::class);
         $this->call(ServicePoint::class);
         $this->call(ServiceFare::class);
+        $this->call(SocialMediaList::class);
+        $this->call(MessengerTypeSeeder::class);
     }
 }

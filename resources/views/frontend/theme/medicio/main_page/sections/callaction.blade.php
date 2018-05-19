@@ -13,7 +13,7 @@
         <div class="col-md-4">
           <div class="wow lightSpeedIn" data-wow-delay="0.1s">
             <div class="cta-btn">
-              <a data-toggle="modal" data-target="#form_contact" class="btn btn-skin btn-lg">Contact Us</a>
+              <a href="{{ route('contact.create') }}" class="btn btn-skin btn-lg">Contact Us</a>
             </div>
           </div>
         </div>

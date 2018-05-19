@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Role;
+use App\Permission;
+use Illuminate\Validation\Rule;
 
 class RoleController extends Controller
 {
@@ -25,7 +27,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.usermanagement.role.create');
+        $permissions = Permission::orderBy('id', 'asc')->get();
+        return view('admin.usermanagement.role.create', compact('permissions'));
     }
 
     /**
@@ -36,7 +39,23 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|min:2|max:255|unique:roles,name',
+            'displayName' => 'required|string|min:2|max:255',
+            'description' => 'required|string|min:2',
+        ]);
+
+        $role = Role::addNewRole($request);
+
+        foreach(Permission::get() as $permission) {
+            foreach($request->permission as $item) {
+                if($permission->id == $item ) {
+                    $role->permissions()->attach($permission);
+                }
+            }
+        }
+
+        return redirect()->route('role.index')->with('flashmessage', 'Role was created successfully!');
     }
 
     /**
@@ -58,7 +77,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('admin.usermanagement.role.edit', compact('role'));
+        $permissions = Permission::orderBy('id', 'asc')->get();
+        return view('admin.usermanagement.role.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -68,9 +88,30 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'min:2', 'max:255', Rule::unique('roles')->ignore($role->id)],
+            'displayName' => 'required|string|min:2|max:255',
+            'description' => 'required|string|min:2',
+        ]);
+
+        $role->name = $request->name;
+        $role->display_name = $request->displayName;
+        $role->description = $request->description;
+        $role->save();
+
+        $role->permissions()->detach();
+
+        foreach(Permission::get() as $permission) {
+            foreach($request->permission as $item) {
+                if($permission->id == $item ) {
+                    $role->permissions()->attach($permission);
+                }
+            }
+        }
+
+        return redirect()->route('role.index')->with('flashmessage', 'Role was successfully edited!');
     }
 
     /**
@@ -81,6 +122,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->permissions()->detach();
+        $role->delete();
+        return redirect()->route('role.index')->with('flashmessage', 'Role was successfully deleted!');
     }
 }
