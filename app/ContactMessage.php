@@ -24,8 +24,8 @@ class ContactMessage extends Model
     		'phone' => $request->msformphone,
     		'service_id' => $request->msformservice,
     		'country_id' => $request->msformcountry,
-    		'arrival' => $arrival,
-    		'return' => $return,
+    		'arrival' => $request->msformarrival,
+    		'return' => $request->msformreturn,
     		'message' => $request->msformmessage,
     	]);
     }
