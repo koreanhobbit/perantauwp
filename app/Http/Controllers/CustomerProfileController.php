@@ -48,5 +48,10 @@ class CustomerProfileController extends Controller
             'socialmedia.*' => 'nullable|string',
             'messenger.*' => 'nullable|string',
         ]);
+
+        //save to database
+        $user->name = $request->name;
+        
+
     }
 }

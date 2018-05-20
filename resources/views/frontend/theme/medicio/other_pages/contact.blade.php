@@ -32,7 +32,12 @@
                                                 <legend>Personal Data</legend>
                                                 <div class="form-group {{ $errors->has('msformname') ? 'has-error' : '' }}">
                                                     <label for="msformname">Name</label>
-                                                    <input type="text" class="form-control" name="msformname" id ="msformname" value="{{ old('msformname') }}">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" name="msformname" id ="msformname" value="{{ old('msformname') }}">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-user"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="help-block {{ $errors->has('msformname') ? '' : 'hidden' }}">
                                                         <span>
                                                             <strong>
@@ -44,7 +49,13 @@
 
                                                 <div class="form-group {{ $errors->has('msformemail') ? 'has-error' : '' }}">
                                                     <label for="msformemail">Email Address</label>
-                                                    <input type="email" name="msformemail" id="msformemail" class="form-control" value="{{ old('msformemail') }}">
+                                                    <div class="input-group">
+
+                                                        <input type="email" name="msformemail" id="msformemail" class="form-control" value="{{ old('msformemail') }}">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-envelope"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="help-block {{ $errors->has('msformemail') ? '' : 'hidden' }}">
                                                         <span>
                                                             <strong>
@@ -56,7 +67,12 @@
 
                                                 <div class="form-group {{ $errors->has('msformphone') ? 'has-error' : '' }}">
                                                     <label for="msformphone">Phone Number/Whatsapp</label>
-                                                    <input type="tel" name="msformphone" id="msformphone" class="form-control" value="{{ old('msformphone') }}">
+                                                    <div class="input-group">
+                                                        <input type="tel" name="msformphone" id="msformphone" class="form-control" value="{{ old('msformphone') }}">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-whatsapp"></i>
+                                                        </div>
+                                                    </div>
                                                     <div class="help-block {{ $errors->has('msformphone') ? '' : 'hidden' }}">
                                                         <span>
                                                             <strong>
@@ -79,14 +95,19 @@
                                                 <legend>Category</legend>
                                                 <div class="form-group {{ $errors->has('msformservice') ? 'has-error' : '' }}">
                                                     <label for="msformservice">Choose Service</label>
-                                                    <select name="msformservice" id="msformservice" class="form-control">
-                                                        <option value="">
-                                                            Choose Service
-                                                        </option>
-                                                        @foreach($services as $service)
-                                                            <option value="{{ $service->id }}" {{ $service->id == old('msformservice') ? 'selected' : '' }}>{{ ucfirst($service->name) }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-thumbs-up"></i>
+                                                        </div>   
+                                                        <select name="msformservice" id="msformservice" class="form-control">
+                                                            <option value="">
+                                                                Choose Service
+                                                            </option>
+                                                            @foreach($services as $service)
+                                                                <option value="{{ $service->id }}" {{ $service->id == old('msformservice') ? 'selected' : '' }}>{{ ucfirst($service->name) }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                     @if($errors->has('msformservice'))
                                                         <div class="help-block">
                                                             <span>
@@ -109,14 +130,19 @@
                                                 <legend>Destination Country</legend>
                                                 <div class="form-group {{ $errors->has('msformcountry') ? 'has-error' : '' }}">
                                                     <label for="msformcountry">Choose Country</label>
-                                                    <select name="msformcountry" id="msformcountry" class="form-control">
-                                                        <option value="">
-                                                            Choose Country
-                                                        </option>
-                                                        @foreach($countries as $country)
-                                                            <option value="{{ $country->id }}" {{ $country->id == old('msformcountry') ? 'selected' : '' }}>{{ ucfirst($country->name) }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-globe"></i>
+                                                        </div>
+                                                        <select name="msformcountry" id="msformcountry" class="form-control">
+                                                            <option value="">
+                                                                Choose Country
+                                                            </option>
+                                                            @foreach($countries as $country)
+                                                                <option value="{{ $country->id }}" {{ $country->id == old('msformcountry') ? 'selected' : '' }}>{{ ucfirst($country->name) }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                     @if($errors->has('msformcountry'))
                                                         <div class="help-block">
                                                             <span>
@@ -193,7 +219,12 @@
                                                 <legend>Extra Information</legend>
                                                 <div class="form-group {{ $errors->has('msformmessage') ? 'has-error' : '' }}">
                                                     <label for="msformmessage">Message</label>
-                                                    <textarea name="msformmessage" id="msformmessage" class="form-control" rows="6">{{ old('msformmessage') }}</textarea>
+                                                    <div class="input-group">
+                                                        <textarea name="msformmessage" id="msformmessage" class="form-control" rows="6">{{ old('msformmessage') }}</textarea>
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-comments-o"></i>
+                                                        </div>
+                                                    </div>
                                                     @if($errors->has('msformmessage'))
                                                         <div class="help-block">
                                                             <span>
