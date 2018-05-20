@@ -124,7 +124,9 @@
                     @endif
                   </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
+              </div>
+              <div class="row">
+                <div class="col-sm-6 col-md-6">
                   <div class="form-group {{ $errors->has('intro-country') ? 'has-error' : '' }}">
                     <label>Destination Country</label>
                       <div class="input-group">
@@ -150,7 +152,7 @@
                   </div>
                 </div>
 
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="col-sm-6 col-md-6">
                   <div class="form-group {{ $errors->has('intro-area') ? 'has-error' : '' }}">
                     <label>Area</label>
                     <div class="input-group">
@@ -174,8 +176,9 @@
                 </div>
               </div>
 
+
                <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="col-sm-6 col-md-6">
                   <div class="form-group {{ $errors->has('arrivaldate') ? 'has-error' : '' }}">
                     <label>Arrival Date</label>
                     <div class="input-group">
@@ -195,7 +198,7 @@
                     @endif
                   </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="col-sm-6 col-md-6">
                   <div class="form-group {{ $errors->has('returndate') ? 'has-error' : '' }}">
                     <label>Return Date</label>
                     <div class="input-group">
