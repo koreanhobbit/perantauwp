@@ -5,7 +5,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="{{ url ('/admin') }}">{{ config('app.name', 'Laravel') }}</a>
+    <a class="navbar-brand" href="{{ route('mainpage.index') }}">
+        <img src="{{ !empty($setting->logoImage()) ? asset($setting->logoImage()->location) : asset('images/astrologo.png') }}" title="{{ !empty($setting->logoImage()) ? $setting->logoImage()->name : 'Astro Logo' }}" width="150" height="30" />
+    </a>
 </div>
 <!-- /.navbar-header -->
 

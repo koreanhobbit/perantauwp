@@ -320,21 +320,18 @@
 						@include('admin.setting.partials._logo')
 					</div>
 					<div class="tab-pane fade" id="uploadLogoTab">
-						@component('admin.widgets.panel')
-							@slot('panelBody')
-								<form action="{{ route('image.store') }}" class="dropzone" id="addNewLogoDz" data-url="{{ route('setting.index', ['setting' => 1]) }}">
-									{{ csrf_field() }}
-									<div class="fallback">
-										<input type="file" name="image" multiple>
-									</div>
-									<div class="dz-message">
-										<h3 class="text-center">
-											Drop your images inside the box or click to add images 
-										</h3>
-									</div>
-								</form>
-							@endslot
-						@endcomponent
+						
+						<form action="{{ route('image.store') }}" class="dropzone" id="addNewLogoDz" data-url="{{ route('setting.index', ['setting' => 1]) }}">
+							{{ csrf_field() }}
+							<div class="fallback">
+								<input type="file" name="image" multiple>
+							</div>
+							<div class="dz-message">
+								<h3 class="text-center">
+									Drop your images inside the box or click to add images 
+								</h3>
+							</div>
+						</form>
 					</div>
 				</div>
 			@endslot
@@ -366,21 +363,18 @@
 						@include('admin.setting.partials._icon')
 					</div>
 					<div class="tab-pane fade" id="uploadIconTab">
-						@component('admin.widgets.panel')
-							@slot('panelBody')
-								<form action="{{ route('image.store') }}" class="dropzone" id="addNewIconDz" data-url="{{ route('setting.index', ['setting' => 1]) }}">
-									{{ csrf_field() }}
-									<div class="fallback">
-										<input type="file" name="image" multiple>
-									</div>
-									<div class="dz-message">
-										<h3 class="text-center">
-											Drop your images inside the box or click to add images 
-										</h3>
-									</div>
-								</form>
-							@endslot
-						@endcomponent
+						
+						<form action="{{ route('image.store') }}" class="dropzone" id="addNewIconDz" data-url="{{ route('setting.index', ['setting' => 1]) }}">
+							{{ csrf_field() }}
+							<div class="fallback">
+								<input type="file" name="image" multiple>
+							</div>
+							<div class="dz-message">
+								<h3 class="text-center">
+									Drop your images inside the box or click to add images 
+								</h3>
+							</div>
+						</form>
 					</div>
 				</div>
 			@endslot
@@ -411,21 +405,17 @@
 						@include('admin.setting.partials._bgImage1')
 					</div>
 					<div class="tab-pane fade" id="uploadBgImage1Tab">
-						@component('admin.widgets.panel')
-							@slot('panelBody')
-								<form action="{{ route('image.store') }}" class="dropzone" id="addNewBgImage1Dz" data-url="{{ route('setting.index', ['setting' => 1]) }}">
-									{{ csrf_field() }}
-									<div class="fallback">
-										<input type="file" name="image" multiple>
-									</div>
-									<div class="dz-message">
-										<h3 class="text-center">
-											Drop your images inside the box or click to add images 
-										</h3>
-									</div>
-								</form>
-							@endslot
-						@endcomponent
+						<form action="{{ route('image.store') }}" class="dropzone" id="addNewBgImage1Dz" data-url="{{ route('setting.index', ['setting' => 1]) }}">
+							{{ csrf_field() }}
+							<div class="fallback">
+								<input type="file" name="image" multiple>
+							</div>
+							<div class="dz-message">
+								<h3 class="text-center">
+									Drop your images inside the box or click to add images 
+								</h3>
+							</div>
+						</form>
 					</div>
 				</div>
 			@endslot
@@ -457,21 +447,18 @@
 						@include('admin.setting.partials._bgImage2')
 					</div>
 					<div class="tab-pane fade" id="uploadBgImage2Tab">
-						@component('admin.widgets.panel')
-							@slot('panelBody')
-								<form action="{{ route('image.store') }}" class="dropzone" id="addNewBgImage2Dz" data-url="{{ route('setting.index', ['setting' => 1]) }}">
-									{{ csrf_field() }}
-									<div class="fallback">
-										<input type="file" name="image" multiple>
-									</div>
-									<div class="dz-message">
-										<h3 class="text-center">
-											Drop your images inside the box or click to add images 
-										</h3>
-									</div>
-								</form>
-							@endslot
-						@endcomponent
+						
+						<form action="{{ route('image.store') }}" class="dropzone" id="addNewBgImage2Dz" data-url="{{ route('setting.index', ['setting' => 1]) }}">
+							{{ csrf_field() }}
+							<div class="fallback">
+								<input type="file" name="image" multiple>
+							</div>
+							<div class="dz-message">
+								<h3 class="text-center">
+									Drop your images inside the box or click to add images 
+								</h3>
+							</div>
+						</form>
 					</div>
 				</div>
 			@endslot

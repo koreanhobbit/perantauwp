@@ -80,6 +80,9 @@
                                                 <div class="form-group {{ $errors->has('msformservice') ? 'has-error' : '' }}">
                                                     <label for="msformservice">Choose Service</label>
                                                     <select name="msformservice" id="msformservice" class="form-control">
+                                                        <option value="">
+                                                            Choose Service
+                                                        </option>
                                                         @foreach($services as $service)
                                                             <option value="{{ $service->id }}" {{ $service->id == old('msformservice') ? 'selected' : '' }}>{{ ucfirst($service->name) }}</option>
                                                         @endforeach
@@ -107,6 +110,9 @@
                                                 <div class="form-group {{ $errors->has('msformcountry') ? 'has-error' : '' }}">
                                                     <label for="msformcountry">Choose Country</label>
                                                     <select name="msformcountry" id="msformcountry" class="form-control">
+                                                        <option value="">
+                                                            Choose Country
+                                                        </option>
                                                         @foreach($countries as $country)
                                                             <option value="{{ $country->id }}" {{ $country->id == old('msformcountry') ? 'selected' : '' }}>{{ ucfirst($country->name) }}</option>
                                                         @endforeach

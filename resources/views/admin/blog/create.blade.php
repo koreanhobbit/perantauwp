@@ -252,21 +252,19 @@
 							@include('admin.blog.partials._featuredImage')
 						</div>
 						<div class="tab-pane fade" id="uploadFeaturedImageTab">
-							@component('admin.widgets.panel')
-								@slot('panelBody')
-									<form action="{{ route('image.store') }}" class="dropzone" id="addNewFeaturedImageDz" data-url="{{ route('blog.create') }}">
-										{{ csrf_field() }}
-										<div class="fallback">
-											<input type="file" name="image" multiple>
-										</div>
-										<div class="dz-message">
-											<h3 class="text-center">
-												Drop your images inside the box or click to add images 
-											</h3>
-										</div>
-									</form>
-								@endslot
-							@endcomponent
+							
+							<form action="{{ route('image.store') }}" class="dropzone" id="addNewFeaturedImageDz" data-url="{{ route('blog.create') }}">
+								{{ csrf_field() }}
+								<div class="fallback">
+									<input type="file" name="image" multiple>
+								</div>
+								<div class="dz-message">
+									<h3 class="text-center">
+										Drop your images inside the box or click to add images 
+									</h3>
+								</div>
+							</form>
+								
 						</div>
 					</div>
 				@endslot

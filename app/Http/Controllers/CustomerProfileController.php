@@ -7,6 +7,7 @@ use App\Image;
 use App\User;
 use App\SocialMediaType;
 use App\MessengerType;
+use Illuminate\Validation\Rule;
 
 class CustomerProfileController extends Controller
 {
@@ -39,20 +40,13 @@ class CustomerProfileController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|min:2|max:255',
-            'email' => ['required', 'email', Rule::unique('users:email')->ignore($user->id)],
-            'address' => 'required|string|min:2',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+            'address' => 'nullable|string|min:2',
+            'birthday' => 'required|date',
+            'whatsapp' => 'required|string',
             'profileImageId' => 'nullable|integer',
+            'socialmedia.*' => 'nullable|string',
+            'messenger.*' => 'nullable|string',
         ]);
-
-        foreach(SocialMediaType::where('slug', '<>', 'youtube')->get() as $socialMedia) {
-            $this->validate($request->$socialMedia->slug, 'nullable|string');
-        }
-
-        foreach(MessengerType::where('slug', '=', 'kakaotalkid')->orWhere('slug', '=', 'lineid')->orderBy('id', 'asc')->get() as $messenger) {
-            $this->validate($request->$messenger->slug, 'nullable|string');
-        }
-
-        
-        
     }
 }

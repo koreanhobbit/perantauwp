@@ -20,8 +20,8 @@
 							@include('admin_customer.profile.partial._profile_image')
 						</div>
 						<div class="tab-pane fade active in" id="uploadProfileImageTab">
-							@component('admin.widgets.panel')
-								@slot('panelBody')
+							<div class="row">
+								<div class="col-sm-12">
 									<form action="{{ route('image.store') }}" class="dropzone" id="addNewProfileImageDz" data-url="{{ route('customer.profile.index', ['user' => Auth::user()->id, 'name' => Auth::user()->name]) }}">
 										{{ csrf_field() }}
 										<div class="fallback">
@@ -33,8 +33,19 @@
 											</h3>
 										</div>
 									</form>
-								@endslot
-							@endcomponent
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="help-block">
+										<span>
+											<strong>
+												Max File size is 3 Mb
+											</strong>
+										</span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				@endslot

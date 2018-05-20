@@ -17,8 +17,12 @@ class AppServiceProvider extends ServiceProvider
         //###########BACKEND#############//
         //###############################//
         //icon tab for backend
-        view()->composer('admin.layouts.app', function($icon) {
-            $icon->with('iconImage', \App\Setting::first()->iconImage());
+        view()->composer('admin.layouts.app', function($setting) {
+            $setting->with('setting', \App\Setting::first());
+        });
+
+        view()->composer('admin.layouts.navs', function($setting) {
+            $setting->with('setting', \App\Setting::first());
         });
 
 
