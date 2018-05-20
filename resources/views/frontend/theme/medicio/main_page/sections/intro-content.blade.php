@@ -24,7 +24,7 @@
 
         <div class="panel panel-skin" style="opacity:0.9;">
           <div class="panel-heading">
-            <h3 class="panel-title"><span class="fa fa-pencil-square-o"></span> Rencanakan kunjungan anda </h3>
+            <h3 class="panel-title"><span class="fa fa-pencil-square-o"></span>Plan your visit</h3>
           </div>
           <div class="panel-body">
             <div id="sendmessage">Pesan anda telah terkirim kami akan menghubungi anda segera. Terimakasih!</div>
@@ -99,15 +99,45 @@
               </div> --}}
 
               <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group {{ $errors->has('intro-origin-country') ? 'has-error' : '' }}">
+                    <label>Origin Country</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-globe"></i>
+                      </div>
+                      <select name="intro-origin-country" id="intro-origin-country" class="form-control" disabled="">
+                        <option value="">Indonesia</option>
+                        {{-- @foreach($countries as $country)
+                          <option value="{{ $country->id }}">{{ ucfirst($country->name) }}</option>
+                        @endforeach --}}
+                      </select>
+                    </div>
+                    @if($errors->has('intro-origin-country'))
+                      <div class="help-block">
+                        <span>
+                          <strong>
+                            {{ $errors->first('intro-origin-country') }}
+                          </strong>
+                        </span>
+                      </div>
+                    @endif
+                  </div>
+                </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group {{ $errors->has('intro-country') ? 'has-error' : '' }}">
-                    <label>Negara</label>
-                    <select name="intro-country" id="intro-country" class="form-control" data-url="{{route('mainpage.index') }}">
-                      <option value="">Pilih Negara</option>
-                      @foreach($countries as $country)
-                        <option value="{{ $country->id }}">{{ ucfirst($country->name) }}</option>
-                      @endforeach
-                    </select>
+                    <label>Destination Country</label>
+                      <div class="input-group">
+                        <div class="input-group-addon">
+                          <i class="fa fa-globe"></i>
+                        </div>
+                        <select name="intro-country" id="intro-country" class="form-control" data-url="{{route('mainpage.index') }}">
+                          <option value="">Choose Country</option>
+                          @foreach($countries as $country)
+                            <option value="{{ $country->id }}">{{ ucfirst($country->name) }}</option>
+                          @endforeach
+                        </select>
+                      </div>
                     @if($errors->has('intro-country'))
                       <div class="help-block">
                         <span>
@@ -122,10 +152,15 @@
 
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group {{ $errors->has('intro-area') ? 'has-error' : '' }}">
-                    <label>Daerah</label>
-                    <select name="intro-area" id="intro-area" class="form-control" disabled>
-                      <option value="">Pilih Daerah</option>
-                    </select>
+                    <label>Area</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-map-marker"></i>
+                      </div>
+                      <select name="intro-area" id="intro-area" class="form-control" disabled>
+                        <option value="">Choose Area</option>
+                      </select>
+                    </div>
                     @if($errors->has('intro-area'))
                       <div class="help-block">
                         <span>
@@ -142,7 +177,7 @@
                <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group {{ $errors->has('arrivaldate') ? 'has-error' : '' }}">
-                    <label>Tanggal Datang</label>
+                    <label>Arrival Date</label>
                     <div class="input-group">
                       <input type="text" name="arrivaldate" id="arrivaldate" class="form-control input-md" required>
                       <div class="input-group-addon">
@@ -162,7 +197,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group {{ $errors->has('returndate') ? 'has-error' : '' }}">
-                    <label>Tanggal Kembali</label>
+                    <label>Return Date</label>
                     <div class="input-group">
                       <input type="text" name="returndate" id="returndate" class="form-control input-md" required>
                       <div class="input-group-addon">
@@ -184,7 +219,7 @@
 
               <input type="submit" value="Submit" class="btn btn-skin btn-block btn-lg" id="intro-submit">
 
-              <p class="lead-footer">* Kami akan menghubungi anda melalui whatsapp & email nanti</p>
+              <p class="lead-footer">* We will contact you through email & whatsapp</p>
 
             </form>
           </div>
