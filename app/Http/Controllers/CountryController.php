@@ -41,17 +41,19 @@ class CountryController extends Controller
         $this->validate($request, [
             'countryName' => ['required', 'min:2'],
             'countrySlug' => ['required', 'unique:countries,slug'],
-            'areaName' => ['required', 'array'],
-            'areaName.*' => ['required', 'string', 'min:2'],
-            'areaSlug' => ['required', 'array'],
-            'areaSlug.*' => ['required', 'string'],
+            'countryType' => 'required|integer',
+            'areaName' => ['required_if:countryType,1', 'array'],
+            'areaName.*' => ['required_if:countryType,1', 'string', 'min:2'],
+            'areaSlug' => ['required_if:countryType,1', 'array'],
+            'areaSlug.*' => ['required_if:countryType,1', 'string'],
         ]);
 
         //create new country data
         $country = Country::addNewCountry($request);
 
         //add area to country data
-        foreach($request->areaName as $keyName => $areaName) {
+        if($country->type == 1) {
+            foreach($request->areaName as $keyName => $areaName) {
             $area = new Area;
             $area->name = $areaName;
             foreach($request->areaSlug as $keySlug => $areaSlug) {
@@ -62,6 +64,7 @@ class CountryController extends Controller
             $area->slug = $slugVar;
             $area->country_id = $country->id;
             $area->save();
+        }
         }
 
         return redirect()->route('country.index')->with('flashmessage', 'New country was successfully added!');
@@ -101,34 +104,39 @@ class CountryController extends Controller
         $this->validate($request, [
             'countryName' => ['required', 'min:2'],
             'countrySlug' => ['required', Rule::unique('countries','slug')->ignore($country->id)],
-            'areaName' => ['required', 'array'],
-            'areaName.*' => ['required', 'string', 'min:2'],
-            'areaSlug' => ['required', 'array'],
-            'areaSlug.*' => ['required', 'string'],
+            'countryType' => 'required|integer',
+            'areaName' => ['required_if:countryType,1', 'array'],
+            'areaName.*' => ['required_if:countryType,1', 'string', 'min:2'],
+            'areaSlug' => ['required_if:countryType,1', 'array'],
+            'areaSlug.*' => ['required_if:countryType,1', 'string'],
         ]);
 
         //update country data
         $country->name = $request->countryName;
         $country->slug = $request->countrySlug;
+        $country->type = $request->countryType;
         $country->save();
 
-        //remove previous areas from the database
-        foreach($country->areas as $area) {
-            $area->delete();
-        }
 
-        //add area to country data
-        foreach($request->areaName as $keyName => $areaName) {
-            $area = new Area;
-            $area->name = $areaName;
-            foreach($request->areaSlug as $keySlug => $areaSlug) {
-                if($keyName == $keySlug) {
-                    $slugVar = $areaSlug;
-                }
+        if($country->type  == 1) {
+            //remove previous areas from the database
+            foreach($country->areas as $area) {
+                $area->delete();
             }
-            $area->slug = $slugVar;
-            $area->country_id = $country->id;
-            $area->save();
+
+            //add area to country data
+            foreach($request->areaName as $keyName => $areaName) {
+                $area = new Area;
+                $area->name = $areaName;
+                foreach($request->areaSlug as $keySlug => $areaSlug) {
+                    if($keyName == $keySlug) {
+                        $slugVar = $areaSlug;
+                    }
+                }
+                $area->slug = $slugVar;
+                $area->country_id = $country->id;
+                $area->save();
+            }
         }
 
         $countries = Country::orderBy('name', 'asc')->get();

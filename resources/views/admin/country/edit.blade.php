@@ -55,6 +55,18 @@
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group">
+										<label for="countryType">Type</label>
+										<select name="" id="" class="form-control" disabled="">
+											<option value="0" {{ $country->type == 0 ? 'selected' : '' }}>Origin Country</option>
+											<option value="1" {{ $country->type == 1 ? 'selected' : '' }}>Destination Country</option>
+										</select>
+										<input type="hidden" name="countryType" id="countryType" value="{{ $country->type }}">
+									</div>
+								</div>
+							</div>
 						@endslot
 					@endcomponent
 				</div>
@@ -77,7 +89,7 @@
 										</div>
 									</div>
 								</div>
-								@if(count($country->areas) > 0)
+								@if(count($country->areas) > 0 || $country->type == 1)
 									@foreach($country->areas as $area)
 										<div class="row">
 											<div class="col-sm-5">		
@@ -98,6 +110,14 @@
 											</div>
 										</div>
 									@endforeach
+								@else
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="alert alert-info">
+												<h5>No need area info</h5>
+											</div>
+										</div>
+									</div>
 								@endif
 								@if($errors->has('areaName'))
 									<div class="help-block">
@@ -112,11 +132,13 @@
 									</div>
 								@endif
 							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<a class="btn btn-info btn-sm addAreaInput">Add More Area</a>
+							@if($country->type == 1)
+								<div class="row">
+									<div class="col-sm-12">
+										<a class="btn btn-info btn-sm addAreaInput">Add More Area</a>
+									</div>
 								</div>
-							</div>
+							@endif
 						@endslot
 					@endcomponent
 				</div>	

@@ -8,8 +8,15 @@ class ContactMessage extends Model
 {
 	protected $guarded = [];
 
+    public function countries() 
+    {
+        return $this->belongsToMany('App\Country', 'contact_country', 'contact_id', 'country_id');
+    }
+
     public static function addNewContact($request)
     {
+        $arrival = null;
+        $return = null;
         if(!empty($request->msformarrival)) {
             $arrival = date("Y-m-d", strtotime($request->msformarrival));
         }
@@ -23,9 +30,8 @@ class ContactMessage extends Model
     		'email' => $request->msformemail,
     		'phone' => $request->msformphone,
     		'service_id' => $request->msformservice,
-    		'country_id' => $request->msformcountry,
-    		'arrival' => $request->msformarrival,
-    		'return' => $request->msformreturn,
+    		'arrival' => $arrival,
+    		'return' => $return,
     		'message' => $request->msformmessage,
     	]);
     }

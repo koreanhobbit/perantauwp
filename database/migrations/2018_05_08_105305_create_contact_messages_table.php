@@ -20,8 +20,6 @@ class CreateContactMessagesTable extends Migration
             $table->string('phone');
             $table->unsignedInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services');
-            $table->unsignedInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries');
             $table->date('arrival')->nullable();
             $table->date('return')->nullable();
             $table->text('message');

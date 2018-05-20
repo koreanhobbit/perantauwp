@@ -47,6 +47,22 @@
 			$('.deleteAreaBtn').on('click', function() {
 				$(this).parentsUntil('.formAreaInputContainer').remove();
 			});
-		}	
+		}
+
+		//function for country type
+		$('#countryType').change(function() {
+			if($(this).val() == 0) {
+				$('.areaName, .areaSlug').prop('disabled', true);
+				if(!$('.addAreaRow').hasClass('hidden')) {
+					$('.addAreaRow').addClass('hidden');
+				}
+			}
+			else{
+				$('.areaName, .areaSlug').prop('disabled', false);
+				if($('.addAreaRow').hasClass('hidden')) {
+					$('.addAreaRow').removeClass('hidden');
+				}		
+			}
+		});	
 	});
 </script>

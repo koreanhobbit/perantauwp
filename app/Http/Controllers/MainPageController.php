@@ -33,9 +33,10 @@ class MainPageController extends Controller
         $pricings = Service::where('highlight', 1)->take(3)->get();
 
         $services = Service::orderBy('name', 'asc')->get();
-        $countries = Country::orderBy('id', 'asc')->get(); 
+        $oriCountries = Country::where('type', 0)->orderBy('id', 'asc')->get();
+        $countries = Country::where('type', 1)->orderBy('id', 'asc')->get(); 
         $setting = Setting::first();
-        return view('frontend.theme.medicio.main_page.index', compact('setting', 'countries', 'services', 'pricings', 'special'));
+        return view('frontend.theme.medicio.main_page.index', compact('setting', 'countries', 'services', 'pricings', 'special', 'oriCountries'));
     }
 
     /**

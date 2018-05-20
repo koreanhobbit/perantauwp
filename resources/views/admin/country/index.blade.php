@@ -27,6 +27,7 @@
 											<tr>
 												<th class="col-sm-6">Country</th>
 												<th class="text-center">Total Area</th>
+												<th class="text-center">Type</th>
 												<th class="text-center">Edit</th>
 												<th class="text-center">Delete</th>
 											</tr>
@@ -40,6 +41,7 @@
 														</a>
 													</td>
 													<td class="text-center">{{ $country->areas->count() }} Areas</td>
+													<td class="text-center">{{ $country->type == 1 ? 'Destination Country' : 'Origin Country' }}</td>
 													<td class="text-center">
 														<a href="{{ route('country.edit', ['country' => $country->id]) }}" class="btn btn-sm btn-info"><span><i class="fa fa-edit"></i></span></a>
 													</td>

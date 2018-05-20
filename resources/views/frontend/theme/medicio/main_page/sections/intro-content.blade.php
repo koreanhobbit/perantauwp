@@ -107,10 +107,9 @@
                         <i class="fa fa-globe"></i>
                       </div>
                       <select name="intro-origin-country" id="intro-origin-country" class="form-control" disabled="">
-                        <option value="">Indonesia</option>
-                        {{-- @foreach($countries as $country)
+                        @foreach($oriCountries as $country)
                           <option value="{{ $country->id }}">{{ ucfirst($country->name) }}</option>
-                        @endforeach --}}
+                        @endforeach
                       </select>
                     </div>
                     @if($errors->has('intro-origin-country'))

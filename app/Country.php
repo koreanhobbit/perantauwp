@@ -18,6 +18,7 @@ class Country extends Model
     	return static::create([
     		'name' => $request->countryName,
     		'slug' => $request->countrySlug,
+            'type' => $request->countryType,
     		'created_at' => new \DateTime(),
     		'updated_at' => new \DateTime(),
     	]);

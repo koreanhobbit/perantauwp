@@ -54,6 +54,17 @@
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group {{ $errors->has('countryType') ? 'has-error' : '' }}">
+										<label for="countryType">Type</label>
+										<select name="countryType" id="countryType" class="form-control">
+											<option value="0" {{ old('countryType') == 0 ? 'selected' : ''  }}>Origin Country</option>
+											<option value="1" {{ old('countryType') == 1 ? 'selected' : ''  }}>Destination Country</option>
+										</select>
+									</div>
+								</div>
+							</div>
 						@endslot
 					@endcomponent
 				</div>
@@ -66,13 +77,13 @@
 									<div class="col-sm-5">		
 										<div class="form-group">
 											<label for="areaName1">Area Name</label>
-											<input type="text" name="areaName1" id="areaName1" class="form-control areaName">
+											<input type="text" name="areaName1" id="areaName1" class="form-control areaName" {{ old('countryType') == 0 ? 'disabled' : ''  }}>
 										</div>
 									</div>
 									<div class="col-sm-5">		
 										<div class="form-group">
 											<label for="areaSlug1">Area Slug</label>
-											<input type="text" name="areaSlug1" id="areaSlug1" class="form-control areaSlug">
+											<input type="text" name="areaSlug1" id="areaSlug1" class="form-control areaSlug" {{ old('countryType') == 0 ? 'disabled' : ''  }}>
 										</div>
 									</div>
 								</div>
@@ -86,7 +97,7 @@
 									</div>
 								@endif
 							</div>
-							<div class="row">
+							<div class="row addAreaRow {{ old('countryType') == 1 ? '' : 'hidden' }}">
 								<div class="col-sm-12">
 									<a class="btn btn-info btn-sm addAreaInput">Add More Area</a>
 								</div>

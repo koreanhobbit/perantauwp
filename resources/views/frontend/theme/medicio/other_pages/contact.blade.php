@@ -127,16 +127,40 @@
                                         </div>
                                         <div class="tab hidden required-form" data-pos="">
                                             <fieldset>
-                                                <legend>Destination Country</legend>
+                                                <legend>Country</legend>
+                                                <div class="form-group {{ $errors->has('msformOricountry') ? 'has-error' : '' }}">
+                                                    <label for="msformOricountry">Choose Origin Country</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-globe"></i>
+                                                        </div>
+                                                        <select class="form-control" disabled>
+                                                            {{-- <option value="">
+                                                                Choose Origin Country
+                                                            </option> --}}
+                                                            @foreach($oriCountries as $country)
+                                                                <option value="{{ $country->id }}" {{ $country->id == old('msformOricountry') ? 'selected' : '' }}>{{ ucfirst($country->name) }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <input type="hidden" name="msformOricountry" id="msformOricountry" value="{{ $oriCountries->first()->id }}">
+                                                    </div>
+                                                    @if($errors->has('msformOricountry'))
+                                                        <div class="help-block">
+                                                            <span>
+                                                                <strong>{{ $errors->first('msformOricountry') }}</strong>
+                                                            </span>
+                                                        </div>
+                                                    @endif
+                                                </div>
                                                 <div class="form-group {{ $errors->has('msformcountry') ? 'has-error' : '' }}">
-                                                    <label for="msformcountry">Choose Country</label>
+                                                    <label for="msformcountry">Choose Destination Country</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-globe"></i>
                                                         </div>
                                                         <select name="msformcountry" id="msformcountry" class="form-control">
                                                             <option value="">
-                                                                Choose Country
+                                                                Choose Destination Country
                                                             </option>
                                                             @foreach($countries as $country)
                                                                 <option value="{{ $country->id }}" {{ $country->id == old('msformcountry') ? 'selected' : '' }}>{{ ucfirst($country->name) }}</option>
