@@ -2,7 +2,7 @@
 	<tr>
 		<td class="text-center">
 			<div class="thumbnail">
-				<img src="{{ count($product->images) > 0 ? asset($product->thumbnail()->location) : asset($product->noImageThumb()->location) }}" title="{{ count($product->images) > 0 ? $product->thumbnail()->name : $product->noImageThumb()->name }}" class="img-responsive">
+				<img src="{{ count($product->images) > 0 ? asset($product->images()->first()->thumbnail->location) : asset($noImage->thumbnail->location) }}" title="{{ count($product->images) > 0 ? $product->images()->first()->thumbnail->name : $noImage->thumbnail->name }}" class="img-responsive">
 			</div>
 		</td>
 		<td class="text-center">{{ ucfirst($product->name) }}</td>

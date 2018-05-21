@@ -38,7 +38,10 @@
 										@endif
 									</div>
 									<div class="form-group {{ $errors->has('source') ? 'has-error' : '' }}">
-										<label for="source">Source</label>
+										<label for="source">Source&nbsp;<span>
+											<small>
+												(* http://www.example.com)
+											</small></span></label>
 										<input type="text" name="source" id="source" class="form-control" value="{{ $blog->source }}">
 										@if($errors->has('source'))
 											<div class="help-block">
@@ -117,7 +120,7 @@
 											<i class="fa fa-close"></i>
 										</a>
 										<div class="thumbnail">
-											<img src="{{ $featuredImageMark ? asset($thumbnail->location) : '' }}" title="{{ $featuredImageMark ? $thumbnail->name : '' }}" class="img-responsive">
+											<img src="{{ $featuredImageMark ? asset($featuredImage->thumbnail->location) : '' }}" title="{{ $featuredImageMark ? $featuredImage->thumbnail->name : '' }}" class="img-responsive">
 										</div>
 										<input type="hidden" name="featuredImage" id="featuredImageInput" value="{{ $featuredImageMark ? $featuredImage->id : ''}}">
 									</div>

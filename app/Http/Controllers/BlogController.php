@@ -194,20 +194,16 @@ class BlogController extends Controller
 
         //mark if featured image exist or not in the blog post
         $featuredImageMark = false;
-        foreach($blog->images as $image) {
-            if($image->pivot->option === 1) {
-                $featuredImageMark = true;
-            }
-            break;
+        
+        if(!empty($blog->images()->wherePivot('option', 1)->first())) {
+            $featuredImageMark = true;
         }
 
         //if there is featured image send the properties
         if($featuredImageMark == true) {
-             $thumbnail = $blog->thumbnail($blog->id);
              $featuredImage = $blog->featuredImage($blog->id);              
         }
         else {
-            $thumbnail = null;
             $featuredImage = null;
         }
 
@@ -217,7 +213,7 @@ class BlogController extends Controller
 
         $images_fi = Image::where('id', '<>', 1)->orderBy('id', 'desc')->paginate(12, ['*'], 'featuredimagepage');
 
-        return view('admin.blog.edit', compact('blog', 'images', 'featuredImageMark', 'thumbnail', 'tags', 'featuredImage', 'images_fi'));
+        return view('admin.blog.edit', compact('blog', 'images', 'featuredImageMark', 'tags', 'featuredImage', 'images_fi'));
     }
 
     /**

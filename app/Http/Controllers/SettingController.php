@@ -41,85 +41,57 @@ class SettingController extends Controller
 
         //mark if logo exist or not in the product
         $logoMark = false;
-        if(count($setting->images) > 0) {
-            foreach($setting->images as $image) {
-                if($image->pivot->option === 4) {
-                    $logoMark = true;
-                    break;
-                }
-            }
+        if($setting->images()->wherePivot('option', 4)->first()) {
+            $logoMark = true;
         }
 
         //if there is logo send the properties
         if($logoMark) {
-             $thumbnailLogo = $setting->thumbnailLogo();
              $logo = $setting->logoImage();              
         }
         else {
-            $thumbnailLogo = null;
             $logo = null;
         }
 
         //mark if icon exist or not in the product
         $iconMark = false;
-        if(count($setting->images) > 0) {
-            foreach($setting->images as $image) {
-                if($image->pivot->option === 5) {
-                    $iconMark = true;
-                    break;
-                }
-            }
+        if($setting->images()->wherePivot('option', 5)->first()) {
+            $iconMark = true;
         }
 
         //if there is featured image send the properties
         if($iconMark) {
-             $thumbnailIcon = $setting->thumbnailIcon();
              $icon = $setting->iconImage();              
         }
         else {
-            $thumbnailIcon = null;
             $icon = null;
         }
 
         //mark if bg image 1 exist or not in the product
         $bgImage1Mark = false;
-        if(count($setting->themesetting->images) > 0) {
-            foreach($setting->themesetting->images as $image) {
-                if($image->pivot->option === 6) {
-                    $bgImage1Mark = true;
-                    break;
-                }
-            }
+        if($setting->images()->wherePivot('option', 6)->first()) {
+            $bgImage1Mark = true;
         }
 
         // if there is bg image 1 send the properties
         if($bgImage1Mark) {
-             $thumbnailBgImage1 = $setting->themesetting->thumbnailBgImage1();
              $bgImage1 = $setting->themesetting->bgImage1();              
         }
         else {
-            $thumbnailBgImage1 = null;
             $bgImage1 = null;
         }
 
         //mark if bg image 2 exist or not in the product
         $bgImage2Mark = false;
-        if(count($setting->themesetting->images) > 0) {
-            foreach($setting->themesetting->images as $image) {
-                if($image->pivot->option === 7) {
-                    $bgImage2Mark = true;
-                    break;
-                }
-            }
+        if($setting->images()->wherePivot('option', 7)->first()) {
+            $bgImage2Mark = true;
         }
 
         // if there is bg image 2 send the properties
         if($bgImage2Mark) {
-             $thumbnailBgImage2 = $setting->themesetting->thumbnailBgImage2();
              $bgImage2 = $setting->themesetting->bgImage2();              
         }
         else {
-            $thumbnailBgImage2 = null;
             $bgImage2 = null;
         }
 
@@ -133,8 +105,7 @@ class SettingController extends Controller
 
         $currencies = Currency::orderBy('name', 'asc')->get();
 
-
-        return view('admin.setting.index', compact('setting', 'currencies', 'logoMark','thumbnailLogo', 'logo', 'iconMark', 'thumbnailIcon', 'icon' ,'logoImages', 'iconImages', 'bgImage1Mark', 'thumbnailBgImage1', 'bgImage1', 'bgImages1', 'bgImage2Mark', 'thumbnailBgImage2', 'bgImage2', 'bgImages2'));
+        return view('admin.setting.index', compact('setting', 'currencies', 'logoMark', 'logo', 'iconMark', 'icon' ,'logoImages', 'iconImages', 'bgImage1Mark', 'bgImage1', 'bgImages1', 'bgImage2Mark', 'bgImage2', 'bgImages2'));
     }
 
     /**

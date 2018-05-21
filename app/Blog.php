@@ -33,24 +33,7 @@ class Blog extends Model
 
     public function featuredImage($id)
     {
-        return $image = DB::table('images')
-            ->select('images.id')
-            ->join('imageables', 'images.id', '=', 'imageables.image_id')
-            ->join('blogs', 'imageables.imageable_id', '=', 'blogs.id')
-            ->where('blogs.id', '=', $id)
-            ->where('imageables.option', '=', 1)
-            ->first();
-    }
-
-    public function thumbnail($id)
-    {
-        return $thumbnail = DB::table('thumbnails')
-            ->select('thumbnails.name', 'thumbnails.location')
-            ->join('images', 'images.id', '=', 'thumbnails.image_id')
-            ->join('imageables', 'images.id', '=', 'imageables.image_id')
-            ->join('blogs', 'imageables.imageable_id', '=', 'blogs.id')
-            ->where('blogs.id', '=', $id)
-            ->first();
+        return $this->images()->wherePivot('option', 1)->first();
     }
 
     public function tags() 

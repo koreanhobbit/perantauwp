@@ -120,7 +120,7 @@
 											<div class="col-sm-12">
 												<div class="thumbnail">
 													<a href="javascript:" data-toggle="modal" data-target="#logoModal" class="changeLogoBtn">
-														<img src="{{ $logoMark ? asset($thumbnailLogo->location) : asset('images/astrologothumbnail.png') }}" title="{{ $logoMark ? asset($logo->name) : asset('images/astrologothumbnail.png') }}" class="img-responsive">
+														<img src="{{ $logoMark ? asset($logo->thumbnail->location) : asset('images/astrologothumbnail.png') }}" title="{{ $logoMark ? $logo->name : 'astrologothumbnail.png' }}" class="img-responsive">
 														<input type="hidden" name="logo" id="logo" value="{{ $logoMark ? $logo->id : '' }}">
 													</a>
 												</div>
@@ -137,7 +137,7 @@
 											<div class="col-sm-12">
 												<div class="thumbnail">
 													<a href="javascript:" data-toggle="modal" data-target="#iconModal" class="changeIconBtn">
-														<img src="{{ $iconMark ? asset($thumbnailIcon->location) : asset('images/astrologothumbnail.png') }}" title="{{ $iconMark ? asset($icon->name) : asset('images/astrologothumbnail.png') }}" class="img-responsive">
+														<img src="{{ $iconMark ? asset($icon->thumbnail->location) : asset('images/astrologothumbnail.png') }}" title="{{ $iconMark ? $icon->name : 'astrologothumbnail.png' }}" class="img-responsive">
 														<input type="hidden" name="icon" id="icon" value="{{ $iconMark ? $icon->id : '' }}">
 													</a>
 												</div>
@@ -230,7 +230,7 @@
 										<div class="form-group">
 											<label for="background">Background</label>
 											<select name="background" id="background" class="form-control">
-												@if(count($setting->themesetting->first()->backgrounds))
+												@if(count($setting->themesetting->first()->backgrounds) > 0)
 													@foreach($setting->themesetting->first()->backgrounds as $background)
 														<option value="{{ $background->id }}" {{ !empty($setting->background_id) && $setting->background_id == $background->id ? 'selected' : '' }}>{{ $background->name }}</option>
 													@endforeach
@@ -240,7 +240,7 @@
 										<div class="form-group">
 											<label for="color">Background Color</label>
 											<select name="color" id="color" class="form-control">
-												@if(count($setting->themesetting->first()->colors))
+												@if(count($setting->themesetting->first()->colors) > 0)
 													@foreach($setting->themesetting->first()->colors as $color)
 														<option value="{{ $color->id }}" {{ !empty($setting->color_id) && $setting->color_id == $color->id ? 'selected' : '' }}>{{ $color->name }}</option>
 													@endforeach
@@ -260,7 +260,7 @@
 													<div class="col-sm-12">
 														<div class="thumbnail">
 															<a href="javascript:" data-toggle="modal" data-target="#bgImage1Modal" class="bgImage1Btn">
-																<img src="{{ $bgImage1Mark ? asset($thumbnailBgImage1->location) : asset('frontend/medicio/img/bg/bg1.jpg') }}" title="{{ $bgImage1Mark ? asset($bgImage1->name) : asset('images/astrologothumbnail.png') }}" class="img-responsive">
+																<img src="{{ $bgImage1Mark ? asset($bgImage1->thumbnail->location) : asset('frontend/medicio/img/bg/bg1.jpg') }}" title="{{ $bgImage1Mark ? $bgImage1->name : 'background 1' }}" class="img-responsive">
 																<input type="hidden" name="bgImage1" id="bgImage1" value="{{ $bgImage1Mark ? $bgImage1->id : '' }}">
 															</a>
 														</div>
@@ -279,7 +279,7 @@
 													<div class="col-sm-12">
 														<div class="thumbnail">
 															<a href="javascript:" data-toggle="modal" data-target="#bgImage2Modal" class="bgImage2Btn">
-																<img src="{{ $bgImage2Mark ? asset($thumbnailBgImage2->location) : asset('frontend/medicio/img/bg/bg2.jpg') }}" title="{{ $bgImage2Mark ? asset($bgImage2->name) : asset('images/astrologothumbnail.png') }}" class="img-responsive">
+																<img src="{{ $bgImage2Mark ? asset($bgImage2->thumbnail->location) : asset('frontend/medicio/img/bg/bg2.jpg') }}" title="{{ $bgImage2Mark ? $bgImage2->name : 'background 2' }}" class="img-responsive">
 																<input type="hidden" name="bgImage2" id="bgImage2" value="{{ $bgImage2Mark ? $bgImage2->id : '' }}">
 															</a>
 														</div>

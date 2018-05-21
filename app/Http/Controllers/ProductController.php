@@ -17,8 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $noImage = Image::where('id', 1)->first();
         $products = Product::orderBy('id', 'desc')->paginate(10);
-        return view('admin.product.index', compact('products'));
+        return view('admin.product.index', compact('products', 'noImage'));
     }
 
     /**
@@ -79,14 +80,14 @@ class ProductController extends Controller
     {
         if($request->is_sale == '1') {
             $this->validate($request, [
-                'sale_price' => ['required','integer'],
+                'sale_price' => ['required','integer', 'between:0,9999999999999999999999999,99'],
             ]);
         }
 
         $this->validate($request, [
             'name' => ['required', 'min:2'],
             'slug' => ['required', 'alpha_dash' ,'unique:products,slug'],
-            'price' => ['required','between:0,9999999999,99'],
+            'price' => ['required','integer', 'between:0,9999999999999999999999999,99'],
             'description' => ['required'],
             'category' => ['required', 'integer'],
         ]);
@@ -206,41 +207,29 @@ class ProductController extends Controller
 
         //mark if featured image exist or not in the product
         $featuredImageMark = false;
-        foreach($product->images as $image) {
-            //dd($image->pivot->option);
-            if($image->pivot->option === 1) {
-                $featuredImageMark = true;
-                break;
-            }
+        if(!empty($product->images()->wherePivot('option', 1)->first())) {
+            $featuredImageMark = true;
         }
 
         //if there is featured image send the properties
         if($featuredImageMark) {
-             $thumbnailFi = $product->thumbnailFeaturedImage();
              $featuredImage = $product->featuredImage();              
         }
         else {
-            $thumbnailFi = null;
             $featuredImage = null;
         }
 
         //mark if gallery image exist or not in the product
         $galleryImageMark = false;
-        foreach($product->images as $image) {
-            if($image->pivot->option === 2) {
-                $galleryImageMark = true;
-                break;
-            }
-            
+        if(!empty($product->images()->wherePivot('option', 1)->first())) {
+            $galleryImageMark = true;
         } 
 
         //if there is gallery image send the properties
         if($galleryImageMark) {
-            $thumbnailGis = $product->thumbnailGalleryImage();
             $galleryImages =$product->galleryImage();
         }
         else {
-            $thumbnailGis = null;
             $galleryImages = null;
         }
 
@@ -251,7 +240,7 @@ class ProductController extends Controller
 
         $images_gi = Image::orderBy('id', 'desc')->where('id','<>', 1)->paginate(12,['*'], 'galleryimagepage');
         
-        return view('admin.product.edit', compact('images', 'categories', 'images_fi', 'images_gi', 'product', 'featuredImageMark', 'thumbnailFi', 'featuredImage', 'thumbnailGis', 'galleryImages', 'galleryImageMark'));
+        return view('admin.product.edit', compact('images', 'categories', 'images_fi', 'images_gi', 'product', 'featuredImageMark', 'featuredImage', 'galleryImages', 'galleryImageMark'));
     }
 
     /**
@@ -265,14 +254,14 @@ class ProductController extends Controller
     {
         if($request->is_sale == '1') {
             $this->validate($request, [
-                'sale_price' => ['required','integer'],
+                'sale_price' => ['required','integer','between:0,9999999999999999999999999,99'],
             ]);
         }
 
         $this->validate($request, [
             'name' => ['required', 'min:2'],
             'slug' => ['required', 'alpha_dash', Rule::unique('products')->ignore($product->id)],
-            'price' => ['required','between:0,9999999999,99'],
+            'price' => ['required','integer','between:0,9999999999999999999999999,99'],
             'description' => ['required'],
             'category' => ['required', 'integer'],
         ]);

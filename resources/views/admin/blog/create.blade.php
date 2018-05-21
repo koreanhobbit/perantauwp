@@ -36,7 +36,11 @@
 										@endif
 									</div>
 									<div class="form-group {{ $errors->has('source') ? 'has-error' : '' }}">
-										<label for="source">Source</label>
+										<label for="source">Source&nbsp;<span>
+											<small>
+												(* http://www.example.com)
+											</small></span>
+										</label>
 										<input type="text" name="source" id="source" class="form-control" value="{{ old('source') }}">
 										@if($errors->has('source'))
 											<div class="help-block">

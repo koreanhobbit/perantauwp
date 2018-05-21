@@ -29,49 +29,13 @@ class ThemeSetting extends Model
         return $this->belongsToMany('App\Color', 'color_themesetting', 'themesetting_id', 'color_id');
     }
 
-    public function thumbnailBgImage1() 
-    {
-    	return $thumbnailBgImage1 = DB::table('thumbnails')
-            ->select('thumbnails.name', 'thumbnails.location')
-            ->join('images', 'images.id', '=', 'thumbnails.image_id')
-            ->join('imageables', 'images.id', '=', 'imageables.image_id')
-            ->join('themesettings', 'imageables.imageable_id', '=', 'themesettings.id')
-            ->where('themesettings.id', '=', $this->id)
-            ->where('imageables.option', '=', 6)
-            ->first();
-    }
-
     public function bgImage1()
     {
-    	return $bgImage1 = DB::table('images')
-    		->select('images.*')
-    		->join('imageables', 'images.id', '=', 'imageables.image_id')
-    		->join('themesettings', 'imageables.imageable_id', '=', 'themesettings.id')
-    		->where('themesettings.id', '=', $this->id)
-    		->where('imageables.option', '=', 6)
-    		->first();
-    }
-
-    public function thumbnailBgImage2() 
-    {
-    	return $thumbnailBgImage2 = DB::table('thumbnails')
-            ->select('thumbnails.name', 'thumbnails.location')
-            ->join('images', 'images.id', '=', 'thumbnails.image_id')
-            ->join('imageables', 'images.id', '=', 'imageables.image_id')
-            ->join('themesettings', 'imageables.imageable_id', '=', 'themesettings.id')
-            ->where('themesettings.id', '=', $this->id)
-            ->where('imageables.option', '=', 7)
-            ->first();
+        return $this->images()->wherePivot('option',6)->first();
     }
 
     public function bgImage2()
     {
-    	return $bgImage2 = DB::table('images')
-    		->select('images.*')
-    		->join('imageables', 'images.id', '=', 'imageables.image_id')
-    		->join('themesettings', 'imageables.imageable_id', '=', 'themesettings.id')
-    		->where('themesettings.id', '=', $this->id)
-    		->where('imageables.option', '=', 7)
-    		->first();
+        return $this->images()->wherePivot('option',7)->first();
     }
 }

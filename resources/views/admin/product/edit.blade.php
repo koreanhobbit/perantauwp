@@ -141,7 +141,7 @@
 												<i class="fa fa-close"></i>
 											</a>
 											<div class="thumbnail">
-												<img src="{{ $featuredImageMark ? asset($thumbnailFi->location) : '' }}" title="{{ $featuredImageMark ? $thumbnailFi->name : '' }}" class="img-responsive">
+												<img src="{{ $featuredImageMark ? asset($featuredImage->thumbnail->location) : '' }}" title="{{ $featuredImageMark ? $featuredImage->thumbnail->name : '' }}" class="img-responsive">
 											</div>
 											<input type="hidden" name="featuredImage" id="featuredImageInput" value="{{ $featuredImageMark ? $featuredImage->id : '' }}">
 											
@@ -159,10 +159,10 @@
 										<div class="col-sm-12">
 											<div class="addGalleryImageContainer row {{ $galleryImageMark ? '' : 'hidden' }}">
 												@if($galleryImageMark)
-													@foreach($galleryImages as $key => $image)
+													@foreach($galleryImages as $image)
 														<div class="col-xs-6">
 															<div class="thumbnail imageHolder">
-																<img src="{{ $galleryImageMark ? asset($thumbnailGis[$key]->location) : '' }}" title="{{ $galleryImageMark ? $thumbnailGis[$key]->name : '' }}" data-id="{{ $image->id }}" class="img-responsive galleryImageReps">
+																<img src="{{ $galleryImageMark ? asset($image->thumbnail->location) : '' }}" title="{{ $galleryImageMark ? $image->thumbnail->name : '' }}" data-id="{{ $image->id }}" class="img-responsive galleryImageReps">
 																<a class="btn-sm btn-default removeGalleryImageBtn removeBtn">
 																	<i class="fa fa-close"></i>
 																</a>
