@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/timeline.css') }}">
     {{-- icon tab --}}
-    <link rel="icon" href="{{ !empty($setting->iconImage()) ? asset($setting->iconImage->location) : asset('images/astrologo.png') }}">
+    <link rel="icon" href="{{ !empty($setting->images()->wherePivot('option', 5)->first()) ? asset($setting->images()->wherePivot('option', 5)->first()->thumbnail->location) : asset('images/astrologo.png') }}">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.7/metisMenu.min.css">
 

@@ -31,8 +31,10 @@
         $('.profileImageLink').click(function() {
             var link = $(this).data('location');
             var name = $(this).data('name');
+            var id = $(this).data('id');
             $('.profileImageBtn').children('img').prop('src', link);
             $('.profileImageBtn').children('img').prop('title', name);
+            $('.profileImageId').val(id);
         });
 
 		$('.profileImageBtn').click(function(event) {
@@ -78,8 +80,10 @@
                             $('.profileImageLink').click(function() {
                                 var link = $(this).data('location');
                                 var name = $(this).data('name');
+                                var id = $(this).data('id');
                                 $('.profileImageBtn').children('img').prop('src', link);
                                 $('.profileImageBtn').children('img').prop('title', name);
+                                $('.profileImageId').val(id);
                             });
                     	},
                     });

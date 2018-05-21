@@ -12,29 +12,27 @@
                 </div>
                 <!-- /input-group -->
             </li>
-            <li {{ (Request::is('/' . Auth::user()->name . '/' . Auth::user()->id . '/dashboard') ? 'class="active"' : '') }}>
-                <a href="{{ route('dashboard.index', ['name' => Auth::user()->name, 'user' => Auth::user()->id]) }}"><i class="fa fa-dashboard fa-fw"></i>&nbsp;Dashboard</a>
+            <li {{ (Request::is('/' . Auth::user()->id . '/dashboard/' . Auth::user()->name . '/*') ? 'class="active"' : '') }}>
+                <a href="{{ route('customer.dashboard.index', ['user' => Auth::user()->id, 'name' => Auth::user()->name]) }}"><i class="fa fa-dashboard fa-fw"></i>&nbsp;Dashboard</a>
             </li>
 
-            <li {{ (Request::is('/' . Auth::user()->id . '/profile') ? 'class="active"' : '') }}>
+            <li {{ (Request::is('/' . Auth::user()->id . '/profile/' . Auth::user()->name) . '/*' ? 'class="active"' : '') }}>
                 <a href="{{ route('customer.profile.index', ['user' => Auth::user()->id, 'name' => Auth::user()->name]) }}"> <i class="fa fa-user fa-fw"></i>&nbsp;Profile</a>
             </li>
             
-            {{-- <li>
+            <li>
                 <a href="#">
-                    <i class="fa fa-user fa-fw"></i>&nbsp;Profile<span class="fa arrow"></span>
+                    <i class="fa fa-comments-o fa-fw"></i>&nbsp;Testimony<span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li {{ (Request::is('/' . Auth::user()->id . '/profile') ? 'class="active"' : '') }}>
-                        <a href="{{ route('customer.profile.index', ['user' => Auth::user()->id]) }}"> <i class="fa fa-user"></i>&nbsp;Show Profile</a>
+                    <li {{ (Request::is('/' . Auth::user()->id . '/testimony/' . Auth::user()->name . '/*') ? 'class="active"' : '') }}>
+                        <a href="{{ route('customer.testimony.index', ['user' => Auth::user()->id, 'name' => Auth::user()->name]) }}"> <i class="fa fa-comment-o fa-fw"></i>&nbsp;Testimonies history</a>
                     </li>
-                    <li {{ (Request::is('/' . Auth::user()->id . '/profile/' . Auth::user()->id . 'edit') ? 'class="active"' : '') }}>
-                        <a href="{{ route('customer.profile.edit', ['user' => Auth::user()->id]) }}"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                    <li {{ (Request::is('/' . Auth::user()->id . '/testimony/' . Auth::user()->name . '/*') ? 'class="active"' : '') }}>
+                        <a href="{{ route('customer.testimony.create', ['user' => Auth::user()->id, 'name' => Auth::user()->name]) }}"><i class="fa fa-plus fa-fw"></i>&nbsp;Create Testimony</a>
                     </li>
-                </ul> --}}
-                <!-- /.nav-second-level -->
-            {{-- </li> --}}
-
+                </ul>    
+            </li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

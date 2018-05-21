@@ -18,7 +18,7 @@
                   @if(Auth::user()->hasRole('superadministrator'))
                     <a href="{{ route('manage.index') }}" class="btn btn-sm btn-primary">Dashboard</a>  
                   @elseif(Auth::user()->hasRole('customer'))
-                    <a href="{{ route('dashboard.index', ['user' => Auth::user()->name, 'id' => Auth::user()->id]) }}" class="btn btn-sm btn-primary">Dashboard</a>  
+                    <a href="{{ route('customer.dashboard.index', ['user' => Auth::user()->id, 'name' => Auth::user()->name]) }}" class="btn btn-sm btn-primary">Dashboard</a>  
                   @else
                   <form action="{{ route('logout') }}" method="post">
                     {{ csrf_field() }}

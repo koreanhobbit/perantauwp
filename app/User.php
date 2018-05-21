@@ -39,4 +39,19 @@ class User extends Authenticatable
     {
         return $this->morphToMany('App\Image', 'imageable')->withPivot('option', 'info')->withTimestamps();
     }
+
+    public function detail()
+    {
+        return $this->hasOne('App\UserDetail');
+    }
+
+    public function socialmedias() 
+    {
+        return $this->hasMany('App\Sosmed', 'user_id');
+    }
+
+    public function messengers()
+    {
+        return $this->hasMany('App\Messenger', 'user_id');
+    }
 }

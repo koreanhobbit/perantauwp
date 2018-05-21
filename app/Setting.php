@@ -57,24 +57,11 @@ class Setting extends Model
 
     public function thumbnailIcon() 
     {
-        return $thumbnail = DB::table('thumbnails')
-            ->select('thumbnails.name', 'thumbnails.location')
-            ->join('images', 'images.id', '=', 'thumbnails.image_id')
-            ->join('imageables', 'images.id', '=', 'imageables.image_id')
-            ->join('settings', 'imageables.imageable_id', '=', 'settings.id')
-            ->where('settings.id', '=', $this->id)
-            ->where('imageables.option', '=', 5)
-            ->first();
+        return $this->images()->wherePivot('option', 5)->first()->thumbnail()->first();
     }
 
     public function iconImage()
     {
-        return $logoImage = DB::table('images')
-            ->select('images.*')
-            ->join('imageables', 'images.id', '=', 'imageables.image_id')
-            ->join('settings', 'imageables.imageable_id', '=', 'settings.id')
-            ->where('settings.id', '=', $this->id)
-            ->where('imageables.option', '=', 5)
-            ->first();
+        return $this->images()->wherePivot('option', 5)->first();
     }
 }

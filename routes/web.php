@@ -102,15 +102,21 @@ Route::prefix('manage')->group(function() {
 
 Route::prefix('customer')->middleware('role:customer')->group(function() {
 
+    //testimony
+    Route::post('{user}/testimony/{name}', 'CustomerTestimonyController@store')->name('customer.testimony.store');
+
+    Route::get('{user}/testimony/{name}/create', 'CustomerTestimonyController@create')->name('customer.testimony.create');
+
+    Route::get('{user}/testimony/{name}', 'CustomerTestimonyController@index')->name('customer.testimony.index');
+
     //#profile#//
     
     Route::get('{user}/profile/{name}', 'CustomerProfileController@index')->name('customer.profile.index');
 
-    Route::put('{user}/profile/{name}', 'CustomerProfileController@update')->name('customer.profile.update');
+    Route::put('{user}/profile/{name}/update', 'CustomerProfileController@update')->name('customer.profile.update');
 
     //#dashboard#//
-    Route::resource('{name}/{user}/dashboard', 'CustomerHomeController');
-
+    Route::get('{user}/dashboard/{name}', 'CustomerHomeController@index')->name('customer.dashboard.index');
 });
 
 
