@@ -89,9 +89,10 @@ class CustomerProfileController extends Controller
             //check and delete if its already previous record in the database
             if(!empty($user->socialmedias()->where('social_media_type_id', $key)->first())) {
                 $existSosmed = $user->socialmedias()->where('social_media_type_id', $key)->first();
-                $existSosmed->delete();
+                $existSosmed->value = $item;
+                $existSosmed->save();
             }
-            if(!empty($item)) {
+            else {
                 $sosmed = new Sosmed;
                 $sosmed->user_id = $user->id;
                 $sosmed->social_media_type_id = $key;
@@ -105,7 +106,8 @@ class CustomerProfileController extends Controller
             //check and delete if there is already previous record
             if(!empty($user->messengers()->where('messenger_type_id', $key)->first())) {
                 $existMessenger = $user->messengers()->where('messenger_type_id', $key)->first();
-                $existMessenger->delete();
+                $existMessenger->value = $item;
+                $existMessenger->save();
             }
             if(!empty($item)) {
                 $mes = new Messenger;

@@ -95,13 +95,13 @@
 											<div class="col-sm-5">		
 												<div class="form-group">
 													<label for="areaName1">Area Name</label>
-													<input type="text" name="areaName[{{ $area->slug }}]" id="areaName[{{ $area->slug }}]" class="form-control areaName" value="{{ $area->name }}">
+													<input type="text" name="areaName[{{ $area->id }}]" id="areaName[{{ $area->id }}]" class="form-control areaName" value="{{ $area->name }}">
 												</div>
 											</div>
 											<div class="col-sm-5">		
 												<div class="form-group">
 													<label for="areaSlug1">Area Slug</label>
-													<input type="text" name="areaSlug[{{ $area->slug }}]" id="areaSlug[{{ $area->slug }}]" class="form-control areaSlug" value="{{ $area->slug }}">
+													<input type="text" name="areaSlug[{{ $area->id }}]" id="areaSlug[{{ $area->id }}]" class="form-control areaSlug" value="{{ $area->slug }}">
 												</div>
 											</div>
 											<div class="col-sm-2 text-center">

@@ -117,25 +117,48 @@ class CountryController extends Controller
         $country->type = $request->countryType;
         $country->save();
 
-
-        if($country->type  == 1) {
-            //remove previous areas from the database
-            foreach($country->areas as $area) {
-                $area->delete();
+        foreach($country->areas as $ar) {
+            $mark = false;
+            foreach($request->areaName as $key => $name) {
+                if($key == $ar->id) {
+                    $mark = true;
+                    break;
+                }
             }
-
+            if($mark == false) {
+                $ar->delete();
+            }
+        }
+        
+        if($country->type  == 1) { 
             //add area to country data
             foreach($request->areaName as $keyName => $areaName) {
-                $area = new Area;
-                $area->name = $areaName;
-                foreach($request->areaSlug as $keySlug => $areaSlug) {
-                    if($keyName == $keySlug) {
-                        $slugVar = $areaSlug;
+                if(!empty($country->areas->find($keyName))) {
+                    $country->areas->find($keyName)->name = $areaName;
+
+                    foreach($request->areaSlug as $keySlug => $areaSlug) {
+                        if($keyName == $keySlug) {
+                            $slugVar = $areaSlug;
+                        }
                     }
+                    $country->areas->find($keyName)->slug = $slugVar;
+                    $country->areas->find($keyName)->country_id = $country->id;
+                    $country->areas->find($keyName)->save();
                 }
-                $area->slug = $slugVar;
-                $area->country_id = $country->id;
-                $area->save();
+                else {
+
+                    $area = new Area;
+                    $area->name = $areaName;
+
+                    foreach($request->areaSlug as $keySlug => $areaSlug) {
+                        if($keyName == $keySlug) {
+                            $slugVar = $areaSlug;
+                        }
+                    }
+                    $area->slug = $slugVar;
+                    $area->country_id = $country->id;
+                    $area->save();
+                }
             }
         }
 
