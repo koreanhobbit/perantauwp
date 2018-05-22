@@ -67,8 +67,8 @@
                     <li {{ (Request::is('/manage/testimony/*') ? 'class="active"' : '') }}>
                         <a href="{{ route('testimony.index') }}"> <i class="fa fa-comments-o fa-fw"></i>&nbsp;Displayed Testimony</a>
                     </li>
-                    <li {{ (Request::is('/manage/testimony/edit*') ? 'class="active"' : '') }}>
-                        <a href="{{ route('testimony.edit') }}"> <i class="fa fa-comment-o fa-fw"></i>&nbsp;Manage Testimony</a>
+                    <li {{ (Request::is('/manage/testimony/manage*') ? 'class="active"' : '') }}>
+                        <a href="{{ route('testimony.manage') }}"> <i class="fa fa-comment-o fa-fw"></i>&nbsp;Manage Testimony</a>
                     </li>
                 </ul>
             </li>

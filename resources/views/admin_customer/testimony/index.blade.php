@@ -6,7 +6,7 @@
 	<div class="col-sm-12">
 		<div class="row">
 			<div class="col-sm-12">
-				@if(empty($user->testimonies()->first()))
+				@if(empty($testimonies->first()))
 					<div class="alert alert-info">
 						<div class="text-center">
 							<h1>There is no testimonial yet, Please create your testimony</h1>
@@ -29,8 +29,8 @@
 												</tr>
 											</thead>
 											<tbody>
-												@if(!empty($user->testimonies()->first()))
-													@foreach($user->testimonies()->orderBy('id', 'desc')->get() as $key => $testimony)
+												@if(!empty($testimonies->first()))
+													@foreach($testimonies as $key => $testimony)
 														<tr>
 															<td class="text-center">{{ $key + 1 }}</td>
 															<td class="text-center">{{ $testimony->created_at->diffForHumans() }}</td>

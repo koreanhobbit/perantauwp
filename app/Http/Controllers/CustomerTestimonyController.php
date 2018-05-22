@@ -9,7 +9,8 @@ use App\User;
 class CustomerTestimonyController extends Controller
 {
     public function index(User $user) {
-    	return view('admin_customer.testimony.index', compact('user'));
+        $testimonies = $user->testimonies()->orderBy('id', 'desc')->get();
+    	return view('admin_customer.testimony.index', compact('testimonies'));
     }
 
     public function create() {

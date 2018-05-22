@@ -17,4 +17,9 @@ class Testimony extends Model
     		'user_id' => $user->id,
     	]);
     }
+
+    public function user()
+    {
+    	return $this->belongsTo('App\User');
+    }
 }

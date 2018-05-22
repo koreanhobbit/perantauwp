@@ -17,6 +17,11 @@ class Role extends LaratrustRole
     	]);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'role_user', 'role_id', 'user_id')->withPivot('user_type');
+    }
+
     public function permissions()
     {
     	return $this->belongsToMany('App\Permission', 'permission_role', 'role_id', 'permission_id');
