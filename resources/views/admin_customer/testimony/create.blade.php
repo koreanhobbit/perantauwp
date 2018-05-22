@@ -4,36 +4,38 @@
 
 @section('section')
 	<div class="col-sm-12">
-		<div class="row">
-			<div class="col-sm-12">
-				@component('admin.widgets.panel')
-					@slot('panelTitle', 'Create Testimony')
-					@slot('panelBody')
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="table-responsive">
-									<table class="table table-striped table-hover table-danger">
-										<thead>
-											<tr>
-												<th class="text-center col">No</th>
-												<th class="text-center col-sm-2">Date</th>
-												<th class="text-center col-sm-10">Testimony</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td class="text-center">1</td>
-												<td class="text-center">21-9-2018</td>
-												<td class="text-center">This is awesome</td>
-											</tr>
-										</tbody>
-									</table>
+		<form action="{{ route('customer.testimony.store', ['user' => Auth::user()->id, 'name' => Auth::user()->name]) }}" method="post">
+			{{ csrf_field() }}
+			<div class="row">
+				<div class="col-sm-12">
+					@component('admin.widgets.panel')
+						@slot('class', 'warning')
+						@slot('panelTitle', 'Fill Testimony')
+						@slot('panelBody')
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form group {{ $errors->has('testimony') ? 'has-error' : '' }}">
+										<label for="testimony">Testimony</label>
+										<div class="input-group">
+											<textarea name="testimony" id="testimony" rows="5" class="form-control" required>{{ old('testimony') }}</textarea>
+											<div class="input-group-addon"><i class="fa fa-comment-o"></i></div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-					@endslot
-				@endcomponent
+						@endslot
+					@endcomponent
+				</div>
 			</div>
-		</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="pull-right">
+						<div class="form-group">
+							<button class="btn btn-primary">Create</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 @endsection

@@ -65,6 +65,11 @@ Route::prefix('manage')->group(function() {
     //Scanned File 
     Route::resource('scannedfile', 'ScannedfileController')->middleware('role:superadministrator');
 
+    //##Testimony Management##//
+    Route::get('testimony', 'TestimonyController@edit')->name('testimony.edit')->middleware('role:superadministrator');
+
+    Route::get('testimony/edit', 'TestimonyController@index')->name('testimony.index')->middleware('role:superadministrator');
+
     //##Blog##//
     Route::resource('blog', 'BlogController')->middleware('role:superadministrator');
     Route::put('/blog/publish/{blog}', 'BlogPublishingController@index')->name('blog.publish')->middleware('role:superadministrator');

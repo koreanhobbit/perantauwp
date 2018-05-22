@@ -58,6 +58,21 @@
                 </a>
             </li>
 
+            {{-- testimony management menu --}}
+            <li>
+                <a href="#">
+                    <i class="fa fa-files-o fa-fw"></i>&nbsp;Testimony Management<span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li {{ (Request::is('/manage/testimony/*') ? 'class="active"' : '') }}>
+                        <a href="{{ route('testimony.index') }}"> <i class="fa fa-comments-o fa-fw"></i>&nbsp;Displayed Testimony</a>
+                    </li>
+                    <li {{ (Request::is('/manage/testimony/edit*') ? 'class="active"' : '') }}>
+                        <a href="{{ route('testimony.edit') }}"> <i class="fa fa-comment-o fa-fw"></i>&nbsp;Manage Testimony</a>
+                    </li>
+                </ul>
+            </li>
+
             {{-- Company Service --}}
              <li {{ (Request::is('/manage/service/*') ? 'class="active"' : '') }}>
                 <a href="{{ route('service.index') }}">
